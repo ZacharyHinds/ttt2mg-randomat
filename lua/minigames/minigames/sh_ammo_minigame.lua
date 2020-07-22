@@ -6,13 +6,6 @@ end
 MINIGAME.author = "Wasted"
 MINIGAME.contact = "Zzzaaaccc13 on TTT2 Discord"
 
-MINIGAME.conVarData = {
-  ttt2_minigames_ammo_buymenu = {
-    checkbox = true,
-    desc = "Affects buy menu weapons (Def. 0)"
-  }
-}
-
 if CLIENT then
   MINIGAME.lang = {
     name = {
@@ -22,8 +15,6 @@ if CLIENT then
       English = "Everyone has infinite ammo!"
     }
   }
-else
-  CreateConVar("ttt2_minigames_ammo_buymenu", "0", {FCVAR_ARCHIVE}, "Infinite ammo for buy menu weapons")
 end
 
 if SERVER then
@@ -31,9 +22,7 @@ if SERVER then
     hook.Add("EntityFireBullets", "MinigameAmmo", function(ply, data)
       local wep = ply:GetActiveWeapon()
 
-      if not wep.HasAmmo or not wep:HasAmmo() then return end
-
-      if not GetConVar("ttt2_minigames_ammo_buymenu"):GetBool() and not (wep.Kind == WEAPON_EQUIP1 or wep.Kind == WEAPON_EQUIP2) then return end
+      if not wep.HasAmmo or not wep:HasAmmo() or not wep.AutoSpawnable or (wep.Kind == WEAPON_EQUIP1 or wep.Kind == WEAPON_EQUIP2) then return end
 
       wep.inf_clip_old = wep:Clip1()
       wep:SetClip1(wep:GetMaxClip1() + 1)
