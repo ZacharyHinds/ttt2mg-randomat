@@ -20,7 +20,7 @@ if CLIENT then
       English = "Infinite Credits for Everyone!"
     },
     desc = {
-      English = "Headcrabs will spawn on death."
+      English = ""
     }
   }
 else
