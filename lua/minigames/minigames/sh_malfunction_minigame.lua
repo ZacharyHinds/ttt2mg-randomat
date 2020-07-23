@@ -61,6 +61,7 @@ if SERVER then
         if x == 0 or ttt2_minigames_malfunction_all:GetBool() then
           wep = ply:GetActiveWeapon()
           local dur = ttt2_minigames_malfunction_dur:GetFloat()
+          if not wep.Primary then continue end
           local repeats = math.floor(dur / wep.Primary.Delay) + 1
           timer.Create("MalfunctionMinigameFire", wep.Primary.Delay, repeats, function()
             if wep:Clip1() ~= 0 then

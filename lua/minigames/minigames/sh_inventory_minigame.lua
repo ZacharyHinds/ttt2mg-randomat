@@ -49,7 +49,7 @@ if SERVER then
       local ply1weps = {}
       for _, wep in ipairs(ply1:GetWeapons()) do
         ply1weps[#ply1weps + 1] = wep.ClassName
-        print(ply1weps[#ply1weps])b
+        print(ply1weps[#ply1weps])
         ply1:StripWeapon(ply1weps[#ply1weps])
       end
       for _, wep in ipairs(ply2:GetWeapons()) do
