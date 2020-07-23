@@ -52,7 +52,7 @@ if SERVER then
 
   function MINIGAME:OnDeactivation()
     timer.Remove("FOVMinigame")
-
+    if not starting_plys then return end
     for _, ply in pairs(starting_plys) do
       ply:SetFOV(0, 0)
     end
