@@ -13,7 +13,7 @@ elseif CLIENT then
     desc = "The Gameboy starts a random minigame!"
   }
 
-  SWEP.Icon = "vgui/ttt/icon_gameboy"
+  SWEP.Icon = "VGUI/ttt/icon_randomat"
 
   function SWEP:PrimaryAttack() end
 end
