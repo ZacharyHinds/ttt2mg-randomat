@@ -47,6 +47,10 @@ if SERVER then
     end
   end
 
+  function MINIGAME:IsSelectable()
+    return DetectiveCheck()
+  end
+
   function MINIGAME:OnActivation()
     if not DetectiveCheck() then
       print("[TTT2][MINIGAMES][sh_jesters_minigame] Error: No Valid Detective!")
