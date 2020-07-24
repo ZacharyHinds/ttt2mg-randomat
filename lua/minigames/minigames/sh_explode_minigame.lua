@@ -68,7 +68,7 @@ if SERVER then
   end
 
   function MINIGAME:OnDeactivation()
-    timer.Remove("CreditsMinigame")
+    timer.Remove("MinigameExplode")
   end
 end
 
