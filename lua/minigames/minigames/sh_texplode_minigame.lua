@@ -60,7 +60,7 @@ if SERVER then
     local delay = ttt2_minigames_texplode_timer:GetInt()
 
     timer.Create("TExplodeMinigame", 1, delay, function()
-      if GetRoundState() ~= ROUND_ACTIVE then timer.Remove("TExplodeMinigame")
+      if GetRoundState() ~= ROUND_ACTIVE or not self:IsActive() then timer.Remove("TExplodeMinigame") end
       x = x + 1
       if delay >= 45 and x == delay - 30 then
         net.Start("texplode_popup")

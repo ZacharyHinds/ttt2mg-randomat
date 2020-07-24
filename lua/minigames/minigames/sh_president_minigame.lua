@@ -42,7 +42,8 @@ if SERVER then
     if not pres then
       for _, ply in RandomPairs(player.GetAll()) do
         if pres then continue end
-        if ply:Alive() and not ply:IsSpec() and ply:HasTeam(TEAM_INNOCENT) then ply:SetRole(ROLE_DETECTIVE)
+        if ply:Alive() and not ply:IsSpec() and ply:HasTeam(TEAM_INNOCENT) then
+          ply:SetRole(ROLE_DETECTIVE)
           SendFullStateUpdate()
           pres = ply
         end
