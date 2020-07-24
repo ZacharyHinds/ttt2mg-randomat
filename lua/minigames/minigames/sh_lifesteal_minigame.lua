@@ -37,12 +37,10 @@ end
 
 if SERVER then
   function MINIGAME:OnActivation()
-    hook.Add("PostPlayerDeath", "LifestealMinigame", function(ply)
+    hook.Add("TTT2PostPlayerDeath", "LifestealMinigame", function(ply, _, attacker)
       if not IsValid(ply) then return end
 
-      local attacker = ply.targetAttacker
-
-      if not attacker or not attacker:IsPlayer() then return end
+      if not attacker or not attacker:IsPlayer() or not attacker:Alive() then return end
 
       attacker:SetHealth(attacker:Health() + ttt2_minigames_lifesteal_health:GetInt())
       if attacker:Health() > ttt2_minigames_lifesteal_cap:GetInt() and ttt2_minigames_lifesteal_cap:GetInt() ~= 0 then

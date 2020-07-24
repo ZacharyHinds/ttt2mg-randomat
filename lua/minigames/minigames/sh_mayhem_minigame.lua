@@ -21,10 +21,8 @@ if SERVER then
   function MINIGAME:OnActivation()
     local effectData = EffectData()
 
-    hook.Add("PostPlayerDeath", "MayhemMinigameExplode", function(ply)
+    hook.Add("TTT2PostPlayerDeath", "MayhemMinigameExplode", function(ply, _, attacker)
       if not IsValid(ply) then return end
-
-      local attacker = ply.targetAttacker
 
       timer.Create("MayhemMinigameDelay" .. ply:Nick(), 0.1, 1, function()
         local explode = ents.Create("env_explosion")
