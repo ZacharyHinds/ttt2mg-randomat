@@ -40,10 +40,11 @@ if SERVER then
       for _, ply in ipairs(player.GetAll()) do
         if not ply:Alive() or ply:IsSpec() then continue end
 
-        if table.Count(ply:GetWeapons()) ~= 1 or (table.Count(ply:GetWeapons()) == 1 and ply:GetActiveWeapon():GetClass() ~= ttt2_minigames_harpoon_weaponid:GetString()) then
+        if table.Count(ply:GetWeapons()) ~= 1 or (table.Count(ply:GetWeapons()) == 1 and ply:GetActiveWeapon():GetClass() ~= "ttt_m9k_harpoon") then
           if ttt2_minigames_harpoon_strip:GetBool() then ply:StripWeapons() end
           ply:Give("ttt_m9k_harpoon")
         end
+
       end
     end)
   end
