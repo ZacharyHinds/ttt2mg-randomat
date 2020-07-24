@@ -75,7 +75,7 @@ function SWEP:PrimaryAttack()
 
    -- effects
    if IsValid(hitEnt) then
-      self.Weapon:SendWeaponAnim( ACT_VM_HITCENTER )
+      self:SendWeaponAnim( ACT_VM_HITCENTER )
 
       local edata = EffectData()
       edata:SetStart(spos)
@@ -87,7 +87,7 @@ function SWEP:PrimaryAttack()
          util.Effect("BloodImpact", edata)
       end
    else
-      self.Weapon:SendWeaponAnim( ACT_VM_MISSCENTER )
+      self:SendWeaponAnim( ACT_VM_MISSCENTER )
    end
 
    if SERVER then

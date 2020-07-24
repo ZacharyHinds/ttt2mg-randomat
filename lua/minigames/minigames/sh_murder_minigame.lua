@@ -37,24 +37,26 @@ else
   util.AddNetworkString("MurderMinigameActive")
 end
 
+function IsEvil(ply)
+  if not ply:HasTeam(TEAM_INNOCENT) then
+    return true
+  else
+    return false
+  end
+end
+
 if SERVER then
   function StripBannedWeapons(ply)
     for _, wep in ipairs(ply:GetWeapons()) do
       if wep.ClassName == "weapon_ttt_minigame_murknife" then continue end
       if wep.ClassName == "weapon_ttt_minigames_murrevolver" then continue end
-      if wep.ClassName == "weapon_ttt_unarmed" then continue end
+      if wep.ClassName == "weapon_ttt_unarmed" or wep.ClassName == "weapon_zm_carry" then continue end
       ply:StripWeapon(wep.ClassName)
       ply:SetFOV(0, 0.2)
+      -- print("[TTT2][sh_murder_minigame] Stripped " .. ply:Nick() .. " " .. wep.ClassName)
     end
   end
 
-  function IsEvil(ply)
-    if not ply:HasTeam(TEAM_INNOCENT) then
-      return true
-    else
-      return false
-    end
-  end
 
   function MINIGAME:OnActivation()
     plys = {}
@@ -79,29 +81,36 @@ if SERVER then
     net.Broadcast()
 
     for _, ply in ipairs(plys) do
-      if ply:GetBaseRole() == ROLE_DETECTIVE then
-        timer.Create("MinigameMurderRevolverTimer", 0.15, 1, function()
-          ply:Give("weapon_ttt_minigames_murrevolver")
+      if ply:GetBaseRole() == ROLE_DETECTIVE or ply:GetSubRole() == ROLE_DETECTIVE then
+        timer.Create("MinigameMurderRevolverTimer" .. ply:Nick(), 0.15, 1, function()
+          ply:GiveEquipmentWeapon("weapon_ttt_minigames_murrevolver")
+          -- print("[TTT2][sh_murder_minigame] Gave " .. ply:Nick() .. " weapon_ttt_minigames_murrevolver")
           StripBannedWeapons(ply)
         end)
-      elseif ply:HasTeam(TEAM_TRAITOR) then
-        if ply:GetSubRole() ~= ROLE_TRAITOR then ply:SetRole(ROLE_TRAITOR) end
+      elseif ply:GetTeam() == TEAM_TRAITOR or ply:GetBaseRole() == ROLE_TRAITOR then
+        if ply:GetSubRole() ~= ROLE_TRAITOR then
+          ply:SetRole(ROLE_TRAITOR)
+          -- print("[TTT2][sh_murder_minigame] Forced " .. ply:Nick() .. " base traitor")
+        end
         ply:SetCredits(0)
         SendFullStateUpdate()
-        timer.Create("MinigameMurderKnifeTimer", 0.15, 1, function()
-          ply:Give("weapon_ttt_minigame_murknife")
+        timer.Create("MinigameMurderKnifeTimer" .. ply:Nick(), 0.15, 1, function()
+          ply:GiveEquipmentWeapon("weapon_ttt_minigame_murknife")
+          -- print("[TTT2][sh_murder_minigame] Gave " .. ply:Nick() .. " weapon_ttt_minigame_murknife")
           StripBannedWeapons(ply)
         end)
-      else
+      elseif ply:GetSubRole() ~= ROLE_INNOCENT then
         ply:SetRole(ROLE_INNOCENT, TEAM_INNOCENT)
         SendFullStateUpdate()
+      else
+        -- print("[TTT2][sh_murder_minigame] Did nothing to " .. ply:Nick())
       end
 
-      if ply:HasTeam(TEAM_TRAITOR) then ply:Give("weapon_ttt_minigame_murknife") end
-      if ply:GetBaseRole() == ROLE_DETECTIVE then ply:Give("weapon_ttt_minigames_murrevolver") end
+      -- if ply:HasTeam(TEAM_TRAITOR) then ply:Give("weapon_ttt_minigame_murknife") end
+      -- if ply:GetBaseRole() == ROLE_DETECTIVE then ply:Give("weapon_ttt_minigames_murrevolver") end
 
       if ply:GetBaseRole() == ROLE_INNOCENT then
-        ply:PrintMessage(HUD_PRINTTALK, "Stay alive and gather weapons! Gathering" .. pck .. " weapons will give you a revolver!")
+        ply:PrintMessage(HUD_PRINTTALK, "Stay alive and gather weapons! Gathering " .. pck .. " weapons will give you a revolver!")
       end
     end
     SendFullStateUpdate()
@@ -133,13 +142,12 @@ if SERVER then
       end
     end)
 
-    hook.Add("PostPlayerDeath", "MinigameMurderDrop", function(ply)
+    hook.Add("TTT2PostPlayerDeath", "MinigameMurderDrop", function(ply, _, attacker)
       if not IsValid(ply) then return end
 
-      local attacker = ply.targetAttacker
       print("[sh_murder_minigame] Found attacker: " .. attacker:Nick())
-      if not IsValid(attacker) or attacker:IsSpec() then return end
-      if attacker:GetActiveWeapon().ClassName ~= "weapon_ttt_minigames_murrevolver" or IsEvil(ply) then return end
+      if not IsValid(attacker) then return end
+      if attacker:GetActiveWeapon().ClassName ~= "weapon_ttt_minigames_murrevolver" then return end
 
       attacker:DropWeapon(attacker:GetActiveWeapon())
       attacker:SetNWBool("MinigameMurderBlind", true)
@@ -150,8 +158,6 @@ if SERVER then
   end
 
   function MINIGAME:OnDeactivation()
-    timer.Remove("MinigameMurderRevolverTimer")
-    timer.Remove("MinigameMurderKnifeTimer")
     timer.Remove("MinigameMurderWepTimer")
 
     hook.Remove("WeaponEquip", "MinigameMurderPickup")
@@ -159,6 +165,8 @@ if SERVER then
     hook.Remove("PostPlayerDeath", "MinigameMurderDrop")
 
     for _, ply in ipairs(player.GetAll()) do
+      timer.Remove("MinigameMurderRevolverTimer" .. ply:Nick())
+      timer.Remove("MinigameMurderKnifeTimer" .. ply:Nick())
       ply:SetNWInt("MinigameMurderWepsEquipped", 0)
       ply:SetNWBool("MgMurderRevolver", false)
     end
@@ -184,20 +192,20 @@ if CLIENT then
   end)
 
   function BlindPlayer(i)
-    if not blind_active then return end
     local client = LocalPlayer()
-
-    if client:HasTeam(TEAM_TRAITOR) then
-      surface.SetDrawColor(0, 0, 0, i * 5)
-      surface.DrawRect(0, 0, surface.ScreenWidth(), surface.ScreenHeight())
-    end
+    surface.SetDrawColor(0, 0, 0, i * 5)
+    surface.DrawRect(0, 0, surface.ScreenWidth(), surface.ScreenHeight())
   end
 
   local i = 0
   hook.Add("DrawOverlay", "MgMurderBlind", function()
     local client = LocalPlayer()
     if client:GetNWBool("MinigameMurderBlind", false) then
+      -- print("[TTT2][sh_murder_minigame] Blinding: " .. client:Nick() .. " " .. i)
       i = i + 1
+      BlindPlayer(i)
+    elseif i > 0 then
+      i = math.max(i - 2, 0)
       BlindPlayer(i)
     else
       i = 0
