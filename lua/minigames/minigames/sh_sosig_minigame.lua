@@ -35,6 +35,7 @@ if SERVER then
         net.Send(ply)
         for k, ply in ipairs(player.GetAll()) do
           for _, wep in ipairs(ply:GetWeapons()) do
+            if not wep.Primary then continue end
             wep.Primary.Sound = "weapons/sosig.mp3"
           end
         end
@@ -45,4 +46,12 @@ if SERVER then
   function MINIGAME:OnDeactivation()
     hook.Remove("WeaponEquip", "SosigMinigameEquip")
   end
+end
+
+if CLIENT then
+  net.Receive("sosig_trigger", function()
+    for _, wep in pairs(LocalPlayer():GetWeapons()) do
+      wep.Primary.Sound = "weapons/sosig.mp3"
+    end
+  end)
 end
