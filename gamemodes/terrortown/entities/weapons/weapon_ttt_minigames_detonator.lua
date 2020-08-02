@@ -44,7 +44,7 @@ if SERVER then
     explode:Fire("Explode", 0, 0)
     explode:EmitSound("ambient/explosions/explode_4.wav", 400, 400)
 		for _, pl in pairs(player.GetAll()) do
-			pl:PrintMessage(HUD_PRINTTALK, owner:Nick() .. " has detonated " .. pl:Nick())
+			pl:PrintMessage(HUD_PRINTTALK, owner:Nick() .. " has detonated " .. ply:Nick())
 		end
   end
 end
