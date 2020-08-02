@@ -43,10 +43,9 @@ if SERVER then
     explode:SetKeyValue("iMagnitude", "230")
     explode:Fire("Explode", 0, 0)
     explode:EmitSound("ambient/explosions/explode_4.wav", 400, 400)
-  end
-
-  for _, pl in pairs(player.GetAll()) do
-    pl:PrintMessage(HUD_PRINTTALK, owner:Nick() .. " has detonated " .. pl:Nick())
+		for _, pl in pairs(player.GetAll()) do
+			pl:PrintMessage(HUD_PRINTTALK, owner:Nick() .. " has detonated " .. pl:Nick())
+		end
   end
 end
 
@@ -55,7 +54,7 @@ function SWEP:Initialize()
 end
 
 function SWEP:Equip()
-    if not self.Target or not IsValid(self.Target) then return end
+  if not self.Target or not IsValid(self.Target) then return end
 	self.Owner:PrintMessage(HUD_PRINTTALK, "You have recieved the detonator for "..self.Target:Nick())
 end
 
