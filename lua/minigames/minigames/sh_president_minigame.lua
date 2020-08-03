@@ -52,7 +52,7 @@ if SERVER then
 
     if not pres then return false end
 
-    pres:SetMaxHealth(pres:Health() + ttt2_minigames_president_bonushp:GetInt())
+    pres:SetMaxHealth(100 + ttt2_minigames_president_bonushp:GetInt())
     pres:SetHealth(pres:GetMaxHealth())
 
     hook.Add("PostPlayerDeath", "PresidentMinigame", function(ply)
