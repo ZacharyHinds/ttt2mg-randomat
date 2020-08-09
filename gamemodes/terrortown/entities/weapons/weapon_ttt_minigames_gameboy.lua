@@ -9,8 +9,8 @@ elseif CLIENT then
 
   SWEP.EquipMenuData = {
     type = "weapon",
-    name = "Gameboy",
-    desc = "The Gameboy starts a random minigame!"
+    name = "Randommat X",
+    desc = "Randomat X starts a random minigame!"
   }
 
   SWEP.Icon = "VGUI/ttt/icon_randomat"
