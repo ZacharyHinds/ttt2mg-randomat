@@ -3,7 +3,7 @@ This is a port of the Randomat/Randomat 2.0 addons for TTT2 using the TTT2 Minig
 
 # Minigames
 
-All the minigames here are based on those from the [Randomat 2.0](https://steamcommunity.com/sharedfiles/filedetails/?id=1406495040). There are some places where I've borrowed code from the original, but by and large I've rebuilt its events using the original as a guideline. Whereever possible, I've tried to .
+All the minigames here are based on those from the [Randomat 2.0](https://steamcommunity.com/sharedfiles/filedetails/?id=1406495040). There are some places where I've borrowed code from the original, but by and large I've rebuilt its events using the original as a guideline. Whereever possible, I've tried to incorporate TTT2's improved functions/features.
 
 ## Completed Minigames
 
