@@ -29,7 +29,7 @@ if SERVER then
         net.Start("privacy_mg_notif")
         net.WriteString(rolename)
         net.WriteEntity(ply)
-        net.WriteTable(ply:GetRoleColor)
+        net.WriteTable(ply:GetRoleColor())
         net.WriteString(equipment)
         net.WriteBool(is_item)
         net.Broadcast()
@@ -65,7 +65,7 @@ elseif CLIENT then
 
     local curRole = ply:GetSubRole()
 
-    if tbl = nil or role ~= curRole then
+    if tbl == nil or role ~= curRole then
       tbl = GetEquipmentForRole(ply, curRole, true)
       role = curRole
     end
