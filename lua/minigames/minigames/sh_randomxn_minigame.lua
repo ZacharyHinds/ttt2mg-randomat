@@ -26,7 +26,6 @@ if CLIENT then
       English = "Random x" .. ttt2_minigames_randomxn_count:GetInt()
     }
   }
-else
 end
 
 if SERVER then

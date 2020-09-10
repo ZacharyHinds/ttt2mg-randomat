@@ -25,7 +25,6 @@ if CLIENT then
       English = "Everthing is fast as Flash now! (" .. ttt2_minigames_flash_scale:GetInt() .. "% faster)"
     }
   }
-else
 end
 
 if SERVER then
