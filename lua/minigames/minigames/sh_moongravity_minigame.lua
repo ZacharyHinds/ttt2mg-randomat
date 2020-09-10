@@ -32,12 +32,12 @@ if SERVER then
   function MINIGAME:OnActivation()
     for _, ply in ipairs(player.GetAll()) do
       if ply:Alive() and not ply:IsSpec() then ply:SetGravity(ttt2_minigames_moongravity_gravity:GetFloat()) end
-      timer.Create("GravityMinigame", 1, 0, function()
-        for k, ply in ipairs(player.GetAll()) do
-          if ply:Alive() and not ply:IsSpec() then ply:SetGravity(ttt2_minigames_moongravity_gravity:GetFloat()) end
-        end
-      end)
     end
+    timer.Create("GravityMinigame", 1, 0, function()
+      for k, ply in ipairs(player.GetAll()) do
+        if ply:Alive() and not ply:IsSpec() then ply:SetGravity(ttt2_minigames_moongravity_gravity:GetFloat()) end
+      end
+    end)
   end
 
   function MINIGAME:OnDeactivation()

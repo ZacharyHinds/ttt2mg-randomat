@@ -31,16 +31,17 @@ end
 if SERVER then
   function MINIGAME:OnActivation()
     local plys = {}
-
-    for _, ply in ipairs(player.GetAll()) do
+    local getPlayers = player.GetAll
+    for i = 1, #getPlayers do
+      local ply = getPlayers[i]
       if ply:Alive() and not ply:IsSpec() then
-        table.insert(plys, ply)
+        plys[#plys + 1] = ply
       end
     end
     local count = #plys
 
     timer.Create("MinigameBees", 0.1, ttt2_minigames_bees_count:GetInt() * count, function()
-      local ply = plys[math.random(1, #plys)]
+      local ply = plys[math.random(#plys)]
       while not ply:Alive() and ply:IsSpec() do
         ply = plys[math.random(1, #plys)]
       end
