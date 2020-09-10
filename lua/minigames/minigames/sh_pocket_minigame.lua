@@ -39,15 +39,11 @@ if SERVER then
         GiveRandomWeapon(ply)
       else
         ply:GiveEquipmentItem(is_item)
-        hook.Call("TTTOrderedEquipment", ply, is_item, true)
-        hook.Call("TTT2OrderedEquipment", ply, is_item, true, 0, true)
         ply.randomweptries = 0
       end
     elseif swep_table then
       if ply:CanCarryWeapon(swep_table) then
         ply:Give(item.ClassName)
-        hook.Call("TTTOrderedEquipment", ply, item.ClassName, false)
-        hook.Call("TTT2OrderedEquipment", ply, item.ClassName, false, 0, true)
         if swep_table.WasBought then
           swep_table:WasBought(ply)
         end
