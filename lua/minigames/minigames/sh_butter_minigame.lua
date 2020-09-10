@@ -34,21 +34,30 @@ end
 
 if SERVER then
   function MINIGAME:OnActivation()
-    local x = 0
+    local plys = util.GetAlivePlayers()
     timer.Create("ButterMinigame", ttt2_minigames_butter_timer:GetInt(), 0, function()
-      for _, ply in ipairs(player.GetAll()) do
-        if not ply:Alive() or ply:IsSpec() then continue end
+      if ttt2_minigames_butter_affectall:GetBool() then
+        for i = 1, #plys do
+          local ply = plys[i]
+          if not ply:Alive() or ply:IsSpec() then continue end
 
-        x = x + 1
-        if x == 1 or ttt2_minigames_butter_affectall:GetBool() then
           if ply:GetActiveWeapon().AllowDrop then
             ply:DropWeapon(ply:GetActiveWeapon())
             ply:SetFOV(0, 0.2)
             ply:EmitSound("vo/npc/Barney/ba_pain01.wav")
           end
         end
+      else
+        local ply = plys[math.random(#plys)]
+        while not ply:Alive() or ply:IsSpec() do
+          ply = plys[math.random(#plys)]
+        end
+        if ply:GetActiveWeapon().AllowDrop then
+          ply:DropWeapon(ply:GetActiveWeapon())
+          ply:SetFOV(0, 0.2)
+          ply:EmitSound("vo/npc/Barney/ba_pain01.wav")
+        end
       end
-      x = 0
     end)
   end
 
