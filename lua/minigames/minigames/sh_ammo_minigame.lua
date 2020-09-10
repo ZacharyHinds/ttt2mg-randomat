@@ -20,6 +20,7 @@ end
 if SERVER then
   function MINIGAME:OnActivation()
     hook.Add("EntityFireBullets", "MinigameAmmo", function(ply, data)
+      if not IsValid(ply) or not ply:IsPlayer() then return end
       local wep = ply:GetActiveWeapon()
 
       if not wep.HasAmmo or not wep:HasAmmo() or not wep.AutoSpawnable or (wep.Kind == WEAPON_EQUIP1 or wep.Kind == WEAPON_EQUIP2) then return end
