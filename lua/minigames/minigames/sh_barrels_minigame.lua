@@ -44,14 +44,14 @@ end
 
 if SERVER then
   local function TriggerBarrels()
-    local plys = {}
+    local plys = player.GetAll()
     local spacing = ttt2_minigames_barrels_range:GetInt()
     local barrel_count = ttt2_minigames_barrels_count:GetInt()
-    local ent = ents.Create("prop_physics")
 
     for j = 1, #plys do
+      local ent = ents.Create("prop_physics")
       ply = plys[j]
-      if not ply:Alive() or ply:IsSPec() then continue end
+      if not ply:Alive() or ply:IsSpec() then continue end
       for i = 1, barrel_count do
         if not IsValid(ent) then continue end
         ent:SetModel("models/props_c17/oildrum001_explosive.mdl")

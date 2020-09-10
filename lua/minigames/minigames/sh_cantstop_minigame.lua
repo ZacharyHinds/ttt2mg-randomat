@@ -26,9 +26,9 @@ else
 end
 
 if SERVER then
-  local plys = player.GetAll()
   function MINIGAME:OnActivation()
     hook.Add("Think", "CantStopMinigame", function()
+      local plys = player.GetAll()
       for i = 1, #plys do
         local ply = plys[i]
         if ply:Alive() and not ply:IsSpec() then
@@ -36,8 +36,9 @@ if SERVER then
           if ttt2_minigames_cantstop_disable_back:GetBool() then
             ply:ConCommand("-back")
           end
-        else
+        elseif not ply.MgExcept then
           ply:ConCommand("-forward")
+          ply.MgExcept = true
         end
       end
     end)
@@ -45,8 +46,10 @@ if SERVER then
 
   function MINIGAME:OnDeactivation()
     hook.Remove("Think", "CantStopMinigame")
+    local plys = player.GetAll()
     for i = 1, #plys do
       plys[i]:ConCommand("-forward")
+      ply.MgExcept = nil
     end
   end
 end

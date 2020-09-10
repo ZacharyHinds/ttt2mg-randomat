@@ -31,7 +31,7 @@ end
 if SERVER then
   function MINIGAME:OnActivation()
     local plys = {}
-    local getPlayers = player.GetAll
+    local getPlayers = player.GetAll()
     for i = 1, #getPlayers do
       local ply = getPlayers[i]
       if ply:Alive() and not ply:IsSpec() then
