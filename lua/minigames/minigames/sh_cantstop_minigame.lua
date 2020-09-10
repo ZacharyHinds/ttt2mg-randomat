@@ -49,7 +49,7 @@ if SERVER then
     local plys = player.GetAll()
     for i = 1, #plys do
       plys[i]:ConCommand("-forward")
-      ply.MgExcept = nil
+      plys[i].MgExcept = nil
     end
   end
 end

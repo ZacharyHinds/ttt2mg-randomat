@@ -29,9 +29,10 @@ end
 
 if SERVER then
   function MINIGAME:OnActivation()
+    local plys = player.GetAll()
     timer.Create("CreditsMinigame", 0, 0, function()
-      for _, ply in ipairs(player.GetAll()) do
-        ply:SetCredits(ttt2_minigames_credits_count:GetInt())
+      for i = 1, #plys do
+        plys[i]:SetCredits(ttt2_minigames_credits_count:GetInt())
       end
     end)
   end
