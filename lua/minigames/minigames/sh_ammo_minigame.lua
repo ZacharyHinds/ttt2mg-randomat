@@ -31,7 +31,5 @@ if SERVER then
 
   function MINIGAME:OnDeactivation()
     hook.Remove("EntityFireBullets", "MinigameAmmo")
-    -- for _, ply in ipairs(player.GetAll()) do
-    --   ply:GetActiveWeapon().inf_clip_old = ply:GetActiveWeapon()
   end
 end
