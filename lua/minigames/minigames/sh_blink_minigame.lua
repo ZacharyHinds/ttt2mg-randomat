@@ -37,16 +37,11 @@ end
 
 if SERVER then
   function MINIGAME:OnActivation()
-    local plys = {}
-    for _, ply in ipairs(player.GetAll()) do
-      if ply:Alive() and not ply:IsSpec() then
-        table.insert(plys, ply)
-      end
-    end
+    local plys = util.GetAlivePlayers()
 
     local k = 1
     timer.Create("AngelMinigame", ttt2_minigames_blink_delay:GetFloat(), 0, function()
-      if plys[k] ~= nil then
+      if plys[k] then
         local ply = plys[k]
 
         while not ply:Alive() do
