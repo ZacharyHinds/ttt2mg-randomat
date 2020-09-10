@@ -60,13 +60,13 @@ if SERVER then
     if ttt2_minigames_gas_smoke:GetBool() then nadeTable[#nadeTable + 1] = "ttt_smokegrenade_proj" end
 
     timer.Create("GasMinigame", ttt2_minigames_gas_timer:GetInt(), 0, function()
-      local x = 0
-      for _, ply in ipairs(player.GetAll()) do
-        if x == 0 or ttt2_minigames_gas_affectall:GetBool() then
-          if ply:IsSpec() or not ply:Alive() then continue end
-
+      local plys = player.GetAll()
+      if ttt2_minigames_gas_affectall:GetBool() then
+        for i = 1, #plys do
+          local ply = plys[i]
+          if not ply:Alive() or ply:IsSpec() then continue end
           local nade = ents.Create(nadeTable[math.random(#nadeTable)])
-          if not IsValid(nade) then return end
+          if not IsValid(nade) then continue end
 
           nade:SetPos(ply:GetPos())
           nade:SetOwner(ply)
@@ -77,8 +77,23 @@ if SERVER then
           nade:Spawn()
           nade:PhysWake()
           nade:SetDetonateExact(1)
-          x = 1
         end
+      else
+        local ply = plys[math.random(#plys)]
+        while not ply:Alive() or ply:IsSpec() do
+          ply = plys[math.random(#plys)]
+        end
+        local nade = ents.Create(nadeTable[math.random(#nadeTable)])
+        if not IsValid(nade) then return end
+        nade:SetPos(ply:GetPos())
+        nade:SetOwner(ply)
+        nade:SetThrower(ply)
+        nade:SetGravity(0.4)
+        nade:SetFriction(0.2)
+        nade:SetElasticity(0.45)
+        nade:Spawn()
+        nade:PhysWake()
+        nade:SetDetonateExact(1)
       end
     end)
   end

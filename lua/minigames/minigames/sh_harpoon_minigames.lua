@@ -31,18 +31,22 @@ if CLIENT then
 else
   ttt2_minigames_harpoon_timer = CreateConVar("ttt2_minigames_harpoon_timer", "3", {FCVAR_ARCHIVE}, "Delay between being given harpoons")
   ttt2_minigames_harpoon_strip = CreateConVar("ttt2_minigames_harpoon_strip", "1", {FCVAR_ARCHIVE}, "Should the minigame strip other weapons")
-  ttt2_minigames_harpoon_weaponid = CreateConVar("ttt2_minigames_harpoon_strip", "ttt_m9k_harpoon", {FCVAR_ARCHIVE}, "Should the minigame strip other weapons")
+  ttt2_minigames_harpoon_weaponid = CreateConVar("ttt2_minigames_harpoon_weaponid", "ttt_m9k_harpoon", {FCVAR_ARCHIVE}, "Should the minigame strip other weapons")
 end
 
 if SERVER then
   function MINIGAME:OnActivation()
+    local harpoon_class = ttt2_minigames_harpoon_weaponid:GetString()
     timer.Create("HarpoonMinigame", ttt2_minigames_harpoon_timer:GetInt(), 0, function ()
-      for _, ply in ipairs(player.GetAll()) do
+      local plys = player.GetAll()
+      for i = 1, #plys do
+        local ply = plys[i]
         if not ply:Alive() or ply:IsSpec() then continue end
 
-        if table.Count(ply:GetWeapons()) ~= 1 or (table.Count(ply:GetWeapons()) == 1 and ply:GetActiveWeapon():GetClass() ~= "ttt_m9k_harpoon") then
+        local weps = ply:GetWeapons()
+        if #weps ~= 1 or (#weps == 1 and ply:GetActiveWeapon():GetClass() ~= harpoon_class) then
           if ttt2_minigames_harpoon_strip:GetBool() then ply:StripWeapons() end
-          ply:Give("ttt_m9k_harpoon")
+          ply:Give(harpoon_class)
         end
 
       end

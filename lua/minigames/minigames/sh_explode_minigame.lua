@@ -35,17 +35,15 @@ if SERVER then
     local effectdata = EffectData()
 
     timer.Create("MinigameExplode", ttt2_minigames_explode_timer:GetInt(), 0, function()
-      local plys = {}
-      for _, ply in ipairs(player.GetAll()) do
-        if ply:GetBaseRole() ~= ROLE_DETECTIVE then
-          table.insert(plys, ply)
-        end
+      local plys = util.GetAlivePlayers()
+      local ply = plys[math.random(#plys)]
+      local explodetries = 0
+      while ply:GetBaseRole() == ROLE_DETECTIVE and explodetries < 100 do
+        ply = plys[math.random(#plys)]
+        explodetries = explodetries + 1
       end
 
-
-      local ply = plys[math.random(#plys)]
-
-      if IsValid(ply) and ply:Alive() and not ply:IsSpec() then
+      if IsValid(ply) and ply:Alive() and not ply:IsSpec() and ply:GetBaseRole() ~= ROLE_DETECTIVE then
         net.Start("explosion_minigame_exploded")
         net.WriteString(ply:Nick())
         net.Broadcast()

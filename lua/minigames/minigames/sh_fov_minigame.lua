@@ -31,16 +31,17 @@ end
 
 if SERVER then
   function MINIGAME:OnActivation()
-    starting_plys = {}
+    local plys = util.GetAlivePlayers()
     local changed_fov = {}
 
-    for k, ply in ipairs(player.GetAll()) do
-      starting_plys[k] = ply
+    for i = 1, #plys do
+      local ply = plys[i]
       changed_fov[ply] = ply:GetFOV() * ttt2_minigames_fov_scale:GetFloat()
     end
 
     timer.Create("FOVMinigame", 0.1, 0, function()
-      for _, ply in pairs(starting_plys) do
+      for i = 1, #plys do
+        local ply = plys[i]
         if ply:Alive() and not ply:IsSpec() then
           ply:SetFOV(changed_fov[ply], 0)
         else

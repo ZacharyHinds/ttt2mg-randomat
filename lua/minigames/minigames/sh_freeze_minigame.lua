@@ -42,8 +42,10 @@ if SERVER then
     timer.Create("FreezeMinigame", ttt2_minigames_freeze_timer:GetInt(), 0, function()
       net.Start("freeze_minigame_popup")
       net.Broadcast()
+      local plys = util.GetAlivePlayers()
 
-      for _, ply in ipairs(player.GetAll()) do
+      for i = 1, #plys do
+        local ply = plys[i]
         if not ply:Alive() or ply:IsSpec() or not ply:HasTeam(TEAM_INNOCENT) then continue end
 
         ply:Freeze(true)

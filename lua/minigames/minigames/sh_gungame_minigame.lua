@@ -29,34 +29,44 @@ end
 
 if SERVER then
   function MINIGAME:OnActivation()
-    local weps = {}
-    for _, ent in ipairs(ents.GetAll()) do
+    local ents = ents.GetAll()
+    local weps = weapons.GetList()
+    local gungame_weps = {}
+
+    for i = 1, #ents do
+      local ent = ents[i]
       if ent.Base == "weapon_tttbase" and ent.AutoSpawnable then
         ent:Remove()
       end
     end
 
-    for _, wep in ipairs(weapons.GetList()) do
+    for i = 1, #weps do
+      local wep = weps[i]
       if wep.AutoSpawnable and (wep.Kind == WEAPON_HEAVY or wep.Kind == WEAPON_PISTOL) then
-        table.insert(weps, wep)
+        gungame_weps[#gungame_weps + 1] = wep
       end
     end
 
     timer.Create("GunGameMinigame", ttt2_minigames_gungame_timer:GetInt(), 0, function()
       if GetRoundState() ~= ROUND_ACTIVE then timer.Remove("GunGameMinigame") return end
-      for k, ply in ipairs(player.GetAll()) do
+      local plys = util.GetAlivePlayers()
+      for i = 1, #plys do
+        local ply = plys[i]
         local ac = false
         if ply:GetActiveWeapon().Kind == WEAPON_HEAVY or ply:GetActiveWeapon().Kind == WEAPON_PISTOL then
           ac = true
         end
 
-        for _, wep in ipairs(ply:GetWeapons()) do
+        weps = ply:GetWeapons()
+
+        for j = 1, #weps do
+          local wep = weps[j]
           if wep.Kind == WEAPON_HEAVY or wep.Kind == WEAPON_PISTOL then
             ply:StripWeapon(wep.ClassName)
           end
         end
 
-        local wepGiven = table.Random(weps)
+        local wepGiven = gungame_weps[math.random(#gungame_weps)]
         ply:Give(wepGiven.ClassName)
         ply:SetFOV(0, 0.2)
         if ac then

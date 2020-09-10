@@ -39,8 +39,11 @@ if SERVER then
   function MINIGAME:OnActivation()
     push = GetConVar("ttt_crowbar_pushforce"):GetInt()
     RunConsoleCommand("ttt_crowbar_pushforce", push * ttt2_minigames_crowbar_push:GetFloat())
-    for k, ply in ipairs(player.GetAll()) do
-      for _, wep in ipairs(ply:GetWeapons()) do
+    local plys = util.GetAlivePlayers()
+    for i = 1, #plys do
+      local weps = plys[i]:GetWeapons()
+      for j = 1, #weps do
+        local wep = weps[j]
         if wep:GetClass() == "weapon_zm_improvised" then
           wep.Primary.Damage = wep.Primary.Damage * ttt2_minigames_crowbar_dmg:GetFloat()
         end

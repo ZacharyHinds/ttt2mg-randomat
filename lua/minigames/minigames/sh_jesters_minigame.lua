@@ -34,10 +34,11 @@ end
 if SERVER then
   function DetectiveCheck()
     local d = 0
-    for _, ply in ipairs(player.GetAll()) do
-      if d == 1 then return true end
-      if ply:Alive() and ply:GetBaseRole() == ROLE_DETECTIVE then
+    local plys = util.GetAlivePlayers()
+    for i = 1, #plys do
+      if plys[i]:GetBaseRole() == ROLE_DETECTIVE then
         d = 1
+        return true
       end
     end
     if d > 0 then
