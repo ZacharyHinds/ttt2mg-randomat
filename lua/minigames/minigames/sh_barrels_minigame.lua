@@ -46,25 +46,19 @@ if SERVER then
   local function TriggerBarrels()
     local plys = {}
     local spacing = ttt2_minigames_barrels_range:GetInt()
-
-    local getPlayers = player.GetAll()
-    for i = 1, #getPlayers do
-      local ply = getPlayers[i]
-      if not ply:IsSpec() and ply:Alive() then
-        plys[#plys + 1] = ply
-      end
-    end
+    local barrel_count = ttt2_minigames_barrels_count:GetInt()
+    local ent = ents.Create("prop_physics")
 
     for j = 1, #plys do
       ply = plys[j]
-      for i = 1, ttt2_minigames_barrels_count:GetInt() do
-        local ent = ents.Create("prop_physics")
+      if not ply:Alive() or ply:IsSPec() then continue end
+      for i = 1, barrel_count do
         if not IsValid(ent) then continue end
         ent:SetModel("models/props_c17/oildrum001_explosive.mdl")
         ent:SetPos(ply:GetPos() + Vector(math.random(-spacing, spacing), math.random(-spacing, spacing), math.random(5, spacing)))
         ent:Spawn()
         local phys = ent:GetPhysicsObject()
-        if not IsValid(phys) then ent:Remove() continue end
+        if not IsValid(phys) then ent:Remove() end
       end
     end
   end
