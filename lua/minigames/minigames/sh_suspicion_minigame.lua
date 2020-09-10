@@ -30,35 +30,27 @@ end
 
 if SERVER then
   function MINIGAME:OnActivation()
-    local plys = player.GetAll()
+    local plys = util.GetAlivePlayers()
     table.Shuffle(plys)
-    local suspicion_ply = 0
+    local suspicion_ply = plys[math.random(#plys)]
 
-    for _, ply in ipairs(plys) do
-      if ply:HasTeam(TEAM_TRAITOR) then
-        if suspicion_ply == 0 then
-          suspicion_ply = ply
-        end
-      elseif ply:GetBaseRole() == ROLE_INNOCENT then
-        suspicion_ply = ply
-      elseif suspicion_ply == 0 and ply:GetBaseRole() ~= ROLE_DETECTIVE then
-        suspicion_ply = ply
-      end
+    while not suspicion_ply:Alive() or suspicion_ply:IsSpec() or suspicion_ply:GetBaseRole() == ROLE_DETECTIVE do
+      suspicion_ply = plys[math]
     end
 
-    if suspicion_ply ~= 0 then
-      if math.random(1, 100) <= ttt2_minigames_suspicion_jst_chance:GetInt() then
-        suspicion_ply:SetRole(ROLE_JESTER)
-      else
-        suspicion_ply:SetRole(ROLE_TRAITOR)
-      end
-      SendFullStateUpdate()
-      timer.Simple(0.1, function()
-        net.Start("suspicion_minigame_popup")
-        net.WriteEntity(suspicion_ply)
-        net.Broadcast()
-      end)
+    if not suspicion_ply:IsPlayer() then return end
+
+    if math.random(1, 100) <= ttt2_minigames_suspicion_jst_chance:GetInt() then
+      suspicion_ply:SetRole(ROLE_JESTER)
+    elseif suspicion_ply:GetBaseRole() ~= ROLE_TRAITOR then
+      suspicion_ply:SetRole(ROLE_TRAITOR)
     end
+    SendFullStateUpdate()
+    timer.Simple(0.1, function()
+      net.Start("suspicion_minigame_popup")
+      net.WriteEntity(suspicion_ply)
+      net.Broadcast()
+    end)
   end
 
   function MINIGAME:OnDeactivation()
