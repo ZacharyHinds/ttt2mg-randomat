@@ -41,37 +41,33 @@ else
   ttt2_minigames_barrels_timer = CreateConVar("ttt2_minigames_barrels_timer", "60", {FCVAR_ARCHIVE}, "Time between barrel spawns")
 end
 
-local function TriggerBarrels()
-  if CLIENT then return end
-  local plys = {}
-  for k, ply in ipairs(player.GetAll()) do
-    if not ply:IsSpec() and ply:Alive() then
-      plys[k] = ply
+
+if SERVER then
+  local function TriggerBarrels()
+    local plys = {}
+    local GetPlayers = player.GetAll()
+    local spacing = ttt2_minigames_barrels_range:GetInt()
+
+    for i = 1, #GetPlayers do
+      local ply = GetPlayers[i]
+      if not ply:IsSpec() and ply:Alive() then
+        plys[#plys + 1] = ply
+      end
     end
-  end
 
-  for _, ply in ipairs(plys) do
-    if not ply:IsSpec() and ply:Alive() then
+    for j = 1, #GetPlayers do
+      ply = GetPlayers[j]
       for i = 1, ttt2_minigames_barrels_count:GetInt() do
-        if CLIENT then return end
-
         local ent = ents.Create("prop_physics")
-
-        if not IsValid(ent) then return end
-
+        if not IsValid(ent) then continue end
         ent:SetModel("models/props_c17/oildrum001_explosive.mdl")
-        local spacing = ttt2_minigames_barrels_range:GetInt()
         ent:SetPos(ply:GetPos() + Vector(math.random(-spacing, spacing), math.random(-spacing, spacing), math.random(5, spacing)))
         ent:Spawn()
-
         local phys = ent:GetPhysicsObject()
         if not IsValid(phys) then ent:Remove() return end
       end
     end
   end
-end
-
-if SERVER then
   function MINIGAME:OnActivation()
     TriggerBarrels()
     timer.Create("MinigameBarrelSpawn", ttt2_minigames_barrels_timer:GetInt(), 0, TriggerBarrels)
