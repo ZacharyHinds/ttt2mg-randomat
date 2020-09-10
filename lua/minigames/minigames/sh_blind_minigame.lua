@@ -76,7 +76,7 @@ if CLIENT then
 
     if client:HasTeam(TEAM_TRAITOR) then
       surface.SetDrawColor(0, 0, 0, 255)
-      surface.DrawRect(0, 0, surface.ScreenWidth(), surface.ScreenHeight())
+      surface.DrawRect(0, 0, ScrW(), ScrH())
     end
   end
 
