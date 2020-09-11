@@ -23,12 +23,25 @@ if CLIENT then
       English = "NOT THE BEES!"
     }
   }
-else
-  ttt2_minigames_bees_count = CreateConVar("ttt2_minigames_bees_count", "4", {FCVAR_ARCHIVE}, "Number of bees spawned per person")
-  BeeNPC = "npc_manhack"
 end
 
 if SERVER then
+  local ttt2_minigames_bees_count = CreateConVar("ttt2_minigames_bees_count", "4", {FCVAR_ARCHIVE}, "Number of bees spawned per person")
+  local BeeNPC = "npc_manhack"
+  function RemovePly(plys, ply)
+    local j = 1
+    for i = 1, #plys do
+      if plys[i] ~= ply then
+        if i ~= j then
+          plys[j] = plys[i]
+        end
+        j = j + 1
+      else
+        plys[i] = nil
+      end
+    end
+  end
+
   function MINIGAME:OnActivation()
     local plys = {}
     local getPlayers = player.GetAll()
@@ -38,19 +51,21 @@ if SERVER then
         plys[#plys + 1] = ply
       end
     end
-    local count = #plys
 
-    timer.Create("MinigameBees", 0.1, ttt2_minigames_bees_count:GetInt() * count, function()
+    timer.Create("MinigameBees", 0.1, ttt2_minigames_bees_count:GetInt() * #plys, function()
       local ply = plys[math.random(#plys)]
-      while not ply:Alive() and ply:IsSpec() do
+      while not IsValid(ply) or not ply:Alive() and ply:IsSpec() do
+        plys = RemovePly(plys, ply)
         ply = plys[math.random(1, #plys)]
       end
 
-      spos = ply:GetPos() + Vector(math.random(-75, 75), math.random(-75, 75), math.random(200, 250))
+      local spos = ply:GetPos() + Vector(math.random(-75, 75), math.random(-75, 75), math.random(200, 250))
       local headBee = SpawnNPC(ply, spos, BeeNPC)
+      if not IsValid(headBee) then return end
       headBee:SetNPCState(2)
 
       local Bee = ents.Create("prop_dynamic")
+      if not IsValid(Bee) then return end
       Bee:SetModel("models/lucian/props/stupid_bee.mdl")
       Bee:SetPos(spos)
       Bee:SetParent(headBee)
@@ -59,7 +74,20 @@ if SERVER then
     end)
   end
 
+  function BeeCleanup()
+    local entities = ents.GetAll()
+    for i = 1, #entities do
+      local ent = entities[i]
+      if ent:IsNPC() and ent:Classify(CLASS_MANHACK) then
+        ent:Remove()
+      end
+    end
+  end
+
   function MINIGAME:OnDeactivation()
     timer.Remove("MinigameBees")
+    BeeCleanup()
   end
+
+  concommand.Add("ttt2mg_bee_cleanup", BeeCleanup)
 end
