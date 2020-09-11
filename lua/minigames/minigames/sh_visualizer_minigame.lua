@@ -14,8 +14,6 @@ if CLIENT then
       English = "I see dead people"
     }
   }
-else
-
 end
 
 if SERVER then
