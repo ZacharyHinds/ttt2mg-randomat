@@ -88,6 +88,4 @@ if SERVER then
     timer.Remove("MinigameBees")
     BeeCleanup()
   end
-
-  concommand.Add("ttt2mg_bee_cleanup", BeeCleanup)
 end
