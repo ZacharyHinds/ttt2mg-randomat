@@ -52,27 +52,33 @@ end
 
 if SERVER then
   function MINIGAME:OnActivation()
-    local x = 0
     local wep = 0
+    local plys = player.GetAll()
     timer.Create("MalfunctionMinigame", math.random(ttt2_minigames_malfunction_lw:GetInt(), ttt2_minigames_malfunction_up:GetInt()), 0, function()
-      for _, ply in ipairs(player.GetAll()) do
-        if ply:IsSpec() or not ply:Alive() then continue end
-
-        if x == 0 or ttt2_minigames_malfunction_all:GetBool() then
-          wep = ply:GetActiveWeapon()
-          local dur = ttt2_minigames_malfunction_dur:GetFloat()
-          if not wep.Primary then continue end
-          local repeats = math.floor(dur / wep.Primary.Delay) + 1
-          timer.Create("MalfunctionMinigameFire", wep.Primary.Delay, repeats, function()
-            if wep:Clip1() ~= 0 then
-              wep:PrimaryAttack()
-              wep:SetNextPrimaryFire(CurTime() + wep.Primary.Delay)
-            end
-          end)
-          x = 1
+      local target_plys = {}
+      if ttt2_minigames_malfunction_all:GetBool() then
+        for i = 1, #plys do
+          if not plys[i]:Alive() or plys[i]:IsSpec() then continue end
+          target_plys[#target_plys + 1] = plys[i]
         end
+      else
+        target_plys[1] = plys[math.random(#plys)]
       end
-      x = 0
+
+      for i = 1, #target_plys do
+        local ply = target_plys[i]
+        if ply:IsSpec() or not ply:Alive() then continue end
+        wep = ply:GetActiveWeapon()
+        local dur = ttt2_minigames_malfunction_dur:GetFloat()
+        if not wep.Primary then continue end
+        local repeats = math.floor(dur / wep.Primary.Delay) + 1
+
+        timer.Create("MalfunctionMinigameFire", wep.Primary.Delay, repeats, function()
+          if wep:Clip1() == 0 then return end
+          wep:PrimaryAttack()
+          wep:SetNextPrimaryFire(CurTime() + wep.Primary.Delay)
+        end)
+      end
       timer.Adjust("MalfunctionMinigame", math.random(ttt2_minigames_malfunction_lw:GetInt(), ttt2_minigames_malfunction_up:GetInt()))
     end)
   end

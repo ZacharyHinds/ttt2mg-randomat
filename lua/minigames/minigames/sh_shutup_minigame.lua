@@ -18,10 +18,11 @@ end
 
 if SERVER then
   function MINIGAME:OnActivation()
+    local plys = player.GetAll()
     timer.Create("DeafMinigameDelay", 1, 1, function()
       hook.Add("Think", "DeafMinigameThink", function()
-        for _, ply in ipairs(player.GetAll()) do
-          ply:ConCommand("soundfade 100 1")
+        for i = 1, #plys do
+          plys[i]:ConCommand("soundfade 100 1")
         end
       end)
     end)

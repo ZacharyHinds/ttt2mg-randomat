@@ -37,14 +37,17 @@ end
 
 if SERVER then
   function MINIGAME:OnActivation()
-    for _, ply in ipairs(player.GetAll()) do
+    local plys = player.GetAll()
+    for i = 1, #plys do
+      local ply = plys[i]
       if ply:IsSpec() or not ply:Alive() then continue end
 
       ply.mgRegen = CurTime() + 1
     end
 
     hook.Add("Think", "RegenMinigameThink", function()
-      for _, ply in ipairs(player.GetAll()) do
+      for i = 1, #plys do
+        local ply = plys[i]
         if ply:IsSpec() or not ply:Alive() then continue end
 
         if ply.mgRegen <= CurTime() then

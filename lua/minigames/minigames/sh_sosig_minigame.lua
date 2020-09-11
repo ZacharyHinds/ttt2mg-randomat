@@ -22,10 +22,11 @@ if SERVER then
   function MINIGAME:OnActivation()
     net.Start("sosig_trigger")
     net.Broadcast()
-
-    for k, ply in ipairs(player.GetAll()) do
-      for _, wep in ipairs(ply:GetWeapons()) do
-        wep.Primary.Sound = "weapons/sosig.mp3"
+    local plys = player.GetAll()
+    for i = 1, #plys do
+      local weps = plys[i]:GetWeapons()
+      for j = 1, #weps do
+        weps[i].Primary.Sound = "weapons/sosig.mp3"
       end
     end
 
@@ -33,10 +34,11 @@ if SERVER then
       timer.Create("SosigMinigameDelay", 0.1, 1, function()
         net.Start("sosig_trigger")
         net.Send(ply)
-        for k, ply in ipairs(player.GetAll()) do
-          for _, wep in ipairs(ply:GetWeapons()) do
-            if not wep.Primary then continue end
-            wep.Primary.Sound = "weapons/sosig.mp3"
+        for i = 1, #plys do
+          local weps = plys[i]:GetWeapons()
+          for j = 1, #weps do
+            if not weps[i].Primary then continue end
+            weps[i].Primary.Sound = "weapons/sosig.mp3"
           end
         end
       end)
@@ -50,8 +52,9 @@ end
 
 if CLIENT then
   net.Receive("sosig_trigger", function()
-    for _, wep in pairs(LocalPlayer():GetWeapons()) do
-      wep.Primary.Sound = "weapons/sosig.mp3"
+    local weps = LocalPlayer():GetWeapons()
+    for i = 1, #weps do
+      weps[i].Primary.Sound = "weapons/sosig.mp3"
     end
   end)
 end

@@ -59,7 +59,9 @@ if SERVER then
     end
     local tx = 0
     local dx = 0
-    for _, ply in ipairs(player.GetAll()) do
+    local plys = util.GetAlivePlayers()
+    for i = 1, #plys do
+      local ply = plys[i]
       if (ply:HasTeam(TEAM_TRAITOR) and tx == 0) or (ply:GetBaseRole() == ROLE_DETECTIVE and dx == 0) then
         if ply:GetBaseRole() ~= ROLE_DETECTIVE then
           if ply:GetSubRole() ~= ROLE_TRAITOR and ttt2_minigames_jesters_base_traitor:GetBool() then ply:SetRole(ROLE_TRAITOR) end
@@ -72,7 +74,9 @@ if SERVER then
         end
       else
         ply:SetRole(ROLE_JESTER)
-        for k, wep in ipairs(ply:GetWeapons()) do
+        local weps = ply:GetWeapons()
+        for j = 1, #weps do
+          local wep = weps[i]
           if wep.Kind == WEAPON_EQUIP1 or wep.Kind == WEAPON_EQUIP2 then
             ply:StripWeapon(wep:GetClass())
           end

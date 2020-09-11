@@ -37,8 +37,9 @@ end
 
 if SERVER then
   function MINIGAME:OnActivation()
-    for _, ply in ipairs(player.GetAll()) do
-      if not ply:Alive() or ply:IsSpec() then continue end
+    local plys = util.GetAlivePlayers()
+    for i = 1, #plys do
+      local ply = plys[i]
 
       local newhealth = ply:Health() + math.random(ttt2_minigames_randomhealth_lw:GetInt(), ttt2_minigames_randomhealth_up:GetInt())
 
