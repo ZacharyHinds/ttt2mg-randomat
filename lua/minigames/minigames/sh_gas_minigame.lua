@@ -43,16 +43,29 @@ if CLIENT then
       English = ""
     }
   }
-else
-  ttt2_minigames_gas_timer = CreateConVar("ttt2_minigames_gas_timer", "15", {FCVAR_ARCHIVE}, "Delay between grenade drops")
-  ttt2_minigames_gas_affectall = CreateConVar("ttt2_minigames_gas_affectall", "0", {FCVAR_ARCHIVE}, "Should the grenade drop at everyone simultaneously")
-  ttt2_minigames_gas_discomb = CreateConVar("ttt2_minigames_gas_discomb", "1", {FCVAR_ARCHIVE}, "Should discombobulators drop")
-  ttt2_minigames_gas_fire = CreateConVar("ttt2_minigames_gas_fire", "0", {FCVAR_ARCHIVE}, "Should incendiaries drop")
-  ttt2_minigames_gas_smoke = CreateConVar("ttt2_minigames_gas_smoke", "0", {FCVAR_ARCHIVE}, "Should smokes drop")
 end
 
 if SERVER then
-  nadeTable = {}
+  local ttt2_minigames_gas_timer = CreateConVar("ttt2_minigames_gas_timer", "15", {FCVAR_ARCHIVE}, "Delay between grenade drops")
+  local ttt2_minigames_gas_affectall = CreateConVar("ttt2_minigames_gas_affectall", "0", {FCVAR_ARCHIVE}, "Should the grenade drop at everyone simultaneously")
+  local ttt2_minigames_gas_discomb = CreateConVar("ttt2_minigames_gas_discomb", "1", {FCVAR_ARCHIVE}, "Should discombobulators drop")
+  local ttt2_minigames_gas_fire = CreateConVar("ttt2_minigames_gas_fire", "0", {FCVAR_ARCHIVE}, "Should incendiaries drop")
+  local ttt2_minigames_gas_smoke = CreateConVar("ttt2_minigames_gas_smoke", "0", {FCVAR_ARCHIVE}, "Should smokes drop")
+  local nadeTable = {}
+
+  function RemovePly(plys, ply)
+    local j = 1
+    for i = 1, #plys do
+      if plys[i] ~= ply then
+        if i ~= j then
+          plys[j] = plys[i]
+        end
+        j = j + 1
+      else
+        plys[i] = nil
+      end
+    end
+  end
 
   function MINIGAME:OnActivation()
     if ttt2_minigames_gas_discomb:GetBool() then nadeTable[#nadeTable + 1] = "ttt_confgrenade_proj" end
@@ -81,6 +94,7 @@ if SERVER then
       else
         local ply = plys[math.random(#plys)]
         while not ply:Alive() or ply:IsSpec() do
+          RemovePly(plys, ply)
           ply = plys[math.random(#plys)]
         end
         local nade = ents.Create(nadeTable[math.random(#nadeTable)])
