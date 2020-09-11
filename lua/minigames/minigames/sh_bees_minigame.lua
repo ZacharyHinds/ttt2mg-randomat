@@ -54,7 +54,7 @@ if SERVER then
 
     timer.Create("MinigameBees", 0.1, ttt2_minigames_bees_count:GetInt() * #plys, function()
       local ply = plys[math.random(#plys)]
-      while not IsValid(ply) or not ply:Alive() and ply:IsSpec() do
+      while not IsValid(ply) or not ply:Alive() and ply:IsSpec() and #plys > 0 do
         plys = RemovePly(plys, ply)
         ply = plys[math.random(1, #plys)]
       end
