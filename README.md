@@ -22,7 +22,7 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
 ### Bees!
 * Name: sh_bees_minigame
 * Description: Spawns hostile bees
-* Addon Dependencies: 
+* Addon Dependencies:
   * [Jenssons TTT BeeNade](https://steamcommunity.com/sharedfiles/filedetails/?id=913310851)
 * ConVars:
   * ttt2_minigames_bees_count - Number of bees spawned per player
@@ -54,6 +54,10 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
 * Description: Everyone constantly moves forward.
 * ConVars:
   * ttt2_minigames_cantstop_disable_back - If enabled, players cannot hold their backwards movement key to stop moving.
+
+### Communism
+* Name: sh_communism_minigame
+* Description: Buying equipment buys it for every player
 
 ### Crabs are People!
 * Name: sh_crabs_minigame
@@ -132,7 +136,7 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
   * It might work with other mods that add "ttt_m9k_harpoon" and I'm working on potentially fully removing this dependency in the near future
 * ConVars:
   * ttt2_minigames_harpoon_timer  - Delay between giving new harpoons
-  * ttt2_minigames_harpoon_strip  - If enabled, the minigame strips all other weapons. 
+  * ttt2_minigames_harpoon_strip  - If enabled, the minigame strips all other weapons.
   * ttt2_minigames_harpoon_weaponid - In theory, this should allow for replacing the weapon class for the harpoon with a custom one, but it isn't implemented yet
 * Known bugs / TODO:
   * Harpoon stripping doesn't work properly
@@ -201,10 +205,10 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
 
 ### What did I find in my pocket?
 * Name: sh_pocket_minigame
-* Description: Gives every player a random item from the equipment shop. 
+* Description: Gives every player a random item from the equipment shop.
 * Known bugs / TODO:
   * Some items give errors which in turn break the weapon-gifting function so some players may not receive anything.
-  
+
 ### Get Down Mr. President!
 * Name: sh_president_minigame
 * Description: The detective gets bonus health but if they die, everyone on their team (usually innocents) dies too.
@@ -240,6 +244,12 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
 ### Dead Men Tell No Tales
 * Name: sh_search_minigame
 * Description: Bodies cannot be searched
+
+### Shh... It's a Secret
+* Name: sh_secret_minigame
+* Description: All innocents become Spies
+* Addon Dependencies:
+  * [[TTT2] Spy [ROLE]](https://steamcommunity.com/sharedfiles/filedetails/?id=1683708655)
 
 ### Shrunked
 * Name: sh_shrink_minigame
@@ -283,7 +293,7 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
 * ConVars:
   * ttt2_minigames_texplode_timer - Time delay before the traitor explodes
   * ttt2_minigames_texplode_radius  - Size of the traitor's explosion
-  
+
 ### I see dead people
 * Name: sh_visualizer_minigame
 * Description: Players drop a visualizer on death
@@ -336,4 +346,3 @@ Known Bugs / TODO:
 * The icon and model require the old randomat to be installed since I haven't made my own.
 * Add sound effects
 * Add randomat-like functionality to minigames (where events like "Get Down Mr. President" target the owner of the Randomat specifically) if I can figure out a somewhat elegant solution
-
