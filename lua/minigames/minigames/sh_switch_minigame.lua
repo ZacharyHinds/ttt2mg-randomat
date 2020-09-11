@@ -24,11 +24,11 @@ if CLIENT then
     }
   }
 else
-  ttt2_minigames_switch_timer = CreateConVar("ttt2_minigames_switch_timer", "15", {FCVAR_ARCHIVE}, "Time between switches")
   util.AddNetworkString("switch_minigame_popup")
 end
 
 if SERVER then
+  local ttt2_minigames_switch_timer = CreateConVar("ttt2_minigames_switch_timer", "15", {FCVAR_ARCHIVE}, "Time between switches")
   function MINIGAME:OnActivation()
     timer.Create("SwitchMinigameTimer", ttt2_minigames_switch_timer:GetInt(), 0, function()
       local i = 0

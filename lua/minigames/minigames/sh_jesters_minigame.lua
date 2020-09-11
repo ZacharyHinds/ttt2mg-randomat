@@ -26,12 +26,11 @@ if CLIENT then
       English = "One traitor, One Detective. Everyone else is a jester. Detective is stronger."
     }
   }
-else
-  ttt2_minigames_jesters_base_traitor = CreateConVar("ttt2_minigames_jesters_base_traitor", "1", {FCVAR_ARCHIVE}, "Force the sole traitor to be a base traitor")
-  ttt2_minigames_jesters_base_detective = CreateConVar("ttt2_minigames_jesters_base_detective", "1", {FCVAR_ARCHIVE}, "Force the sole traitor to be a base detective")
 end
 
 if SERVER then
+  local ttt2_minigames_jesters_base_traitor = CreateConVar("ttt2_minigames_jesters_base_traitor", "1", {FCVAR_ARCHIVE}, "Force the sole traitor to be a base traitor")
+  local ttt2_minigames_jesters_base_detective = CreateConVar("ttt2_minigames_jesters_base_detective", "1", {FCVAR_ARCHIVE}, "Force the sole traitor to be a base detective")
   function DetectiveCheck()
     local d = 0
     local plys = util.GetAlivePlayers()

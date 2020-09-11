@@ -24,11 +24,11 @@ if CLIENT then
     }
   }
 else
-  ttt2_minigames_suspicion_jst_chance = CreateConVar("ttt2_minigames_suspicion_jst_chance", "50", {FCVAR_ARCHIVE}, "Chance of changing player to jester")
   util.AddNetworkString("suspicion_minigame_popup")
 end
 
 if SERVER then
+  local ttt2_minigames_suspicion_jst_chance = CreateConVar("ttt2_minigames_suspicion_jst_chance", "50", {FCVAR_ARCHIVE}, "Chance of changing player to jester")
   function MINIGAME:OnActivation()
     local plys = util.GetAlivePlayers()
     table.Shuffle(plys)

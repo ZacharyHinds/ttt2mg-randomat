@@ -27,12 +27,11 @@ if CLIENT then
       English = "Hold your weapons tightly!"
     }
   }
-else
-  ttt2_minigames_butter_timer = CreateConVar("ttt2_minigames_butter_timer", "10", {FCVAR_ARCHIVE}, "Time between each weapon drop")
-  ttt2_minigames_butter_affectall = CreateConVar("ttt2_minigames_butter_affectall", "0", {FCVAR_ARCHIVE}, "Should butterfingers affect everyone at once")
 end
 
 if SERVER then
+  local ttt2_minigames_butter_timer = CreateConVar("ttt2_minigames_butter_timer", "10", {FCVAR_ARCHIVE}, "Time between each weapon drop")
+  local ttt2_minigames_butter_affectall = CreateConVar("ttt2_minigames_butter_affectall", "0", {FCVAR_ARCHIVE}, "Should butterfingers affect everyone at once")
   function MINIGAME:OnActivation()
     local plys = util.GetAlivePlayers()
     timer.Create("ButterMinigame", ttt2_minigames_butter_timer:GetInt(), 0, function()

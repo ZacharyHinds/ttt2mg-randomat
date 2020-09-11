@@ -21,11 +21,10 @@ if CLIENT then
       English = ""
     }
   }
-else
-  ttt2_minigames_soulmate_all = CreateConVar("ttt2_minigames_soulmate_all", "0", {FCVAR_ARCHIVE}, "Whether everyone should have a soulmate")
 end
 
 if SERVER then
+  local ttt2_minigames_soulmate_all = CreateConVar("ttt2_minigames_soulmate_all", "0", {FCVAR_ARCHIVE}, "Whether everyone should have a soulmate")
   function MINIGAME:OnActivation()
     local x = 0
 

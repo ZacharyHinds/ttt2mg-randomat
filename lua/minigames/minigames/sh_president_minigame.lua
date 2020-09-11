@@ -23,11 +23,10 @@ if CLIENT then
       English = ""
     }
   }
-else
-  ttt2_minigames_president_bonushp = CreateConVar("ttt2_minigames_president_bonushp", "100", {FCVAR_ARCHIVE}, "Extra health gained by the detective")
 end
 
 if SERVER then
+  local ttt2_minigames_president_bonushp = CreateConVar("ttt2_minigames_president_bonushp", "100", {FCVAR_ARCHIVE}, "Extra health gained by the detective")
   function MINIGAME:OnActivation()
     local plys = util.GetAlivePlayers()
     local pres = nil

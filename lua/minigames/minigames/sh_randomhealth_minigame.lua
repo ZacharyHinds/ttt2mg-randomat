@@ -30,12 +30,11 @@ if CLIENT then
       English = ""
     }
   }
-else
-  ttt2_minigames_randomhealth_up = CreateConVar("ttt2_minigames_randomhealth_up", "100", {FCVAR_ARCHIVE}, "Upper limit for random health gained")
-  ttt2_minigames_randomhealth_lw = CreateConVar("ttt2_minigames_randomhealth_lw", "0", {FCVAR_ARCHIVE}, "Lower limit for random health gained")
 end
 
 if SERVER then
+  local ttt2_minigames_randomhealth_up = CreateConVar("ttt2_minigames_randomhealth_up", "100", {FCVAR_ARCHIVE}, "Upper limit for random health gained")
+  local ttt2_minigames_randomhealth_lw = CreateConVar("ttt2_minigames_randomhealth_lw", "0", {FCVAR_ARCHIVE}, "Lower limit for random health gained")
   function MINIGAME:OnActivation()
     local plys = util.GetAlivePlayers()
     for i = 1, #plys do

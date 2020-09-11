@@ -35,14 +35,13 @@ if CLIENT then
       English = "Gunpowder, Treason, and Plot"
     }
   }
-else
-  ttt2_minigames_barrels_count = CreateConVar("ttt2_minigames_barrels_count", "3", {FCVAR_ARCHIVE}, "Number of barrels spawned per person")
-  ttt2_minigames_barrels_range = CreateConVar("ttt2_minigames_barrels_range", "100", {FCVAR_ARCHIVE}, "Distance barrels spawn from the player")
-  ttt2_minigames_barrels_timer = CreateConVar("ttt2_minigames_barrels_timer", "60", {FCVAR_ARCHIVE}, "Time between barrel spawns")
 end
 
 
 if SERVER then
+  local ttt2_minigames_barrels_count = CreateConVar("ttt2_minigames_barrels_count", "3", {FCVAR_ARCHIVE}, "Number of barrels spawned per person")
+  local ttt2_minigames_barrels_range = CreateConVar("ttt2_minigames_barrels_range", "100", {FCVAR_ARCHIVE}, "Distance barrels spawn from the player")
+  local ttt2_minigames_barrels_timer = CreateConVar("ttt2_minigames_barrels_timer", "60", {FCVAR_ARCHIVE}, "Time between barrel spawns")
   local function TriggerBarrels()
     local plys = player.GetAll()
     local spacing = ttt2_minigames_barrels_range:GetInt()

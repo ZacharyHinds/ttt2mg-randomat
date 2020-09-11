@@ -43,14 +43,13 @@ if CLIENT then
       English = ""
     }
   }
-else
-  ttt2_minigames_malfunction_up = CreateConVar("ttt2_minigames_malfunction_up", "15", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
-  ttt2_minigames_malfunction_lw = CreateConVar("ttt2_minigames_malfunction_lw", "1", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
-  ttt2_minigames_malfunction_all = CreateConVar("ttt2_minigames_malfunction_all", "0", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
-  ttt2_minigames_malfunction_dur = CreateConVar("ttt2_minigames_malfunction_dur", "0.5", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
 end
 
 if SERVER then
+  local ttt2_minigames_malfunction_up = CreateConVar("ttt2_minigames_malfunction_up", "15", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
+  local ttt2_minigames_malfunction_lw = CreateConVar("ttt2_minigames_malfunction_lw", "1", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
+  local ttt2_minigames_malfunction_all = CreateConVar("ttt2_minigames_malfunction_all", "0", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
+  local ttt2_minigames_malfunction_dur = CreateConVar("ttt2_minigames_malfunction_dur", "0.5", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
   function MINIGAME:OnActivation()
     local wep = 0
     local plys = player.GetAll()

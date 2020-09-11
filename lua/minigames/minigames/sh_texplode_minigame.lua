@@ -21,7 +21,7 @@ MINIGAME.conVarData = {
   }
 }
 
-ttt2_minigames_texplode_timer = CreateConVar("ttt2_minigames_texplode_timer", "60", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "How many credits should be available at a time?")
+local ttt2_minigames_texplode_timer = CreateConVar("ttt2_minigames_texplode_timer", "60", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "How many credits should be available at a time?")
 
 if CLIENT then
   MINIGAME.lang = {
@@ -33,11 +33,11 @@ if CLIENT then
     }
   }
 else
-  ttt2_minigames_texplode_radius = CreateConVar("ttt2_minigames_texplode_radius", "600", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
   util.AddNetworkString("texplode_popup")
 end
 
 if SERVER then
+local ttt2_minigames_texplode_radius = CreateConVar("ttt2_minigames_texplode_radius", "600", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
   function MINIGAME:OnActivation()
     local x = 0
     local willExplode = true

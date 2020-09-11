@@ -25,11 +25,10 @@ if CLIENT then
       English = ""
     }
   }
-else
-  ttt2_minigames_fov_scale = CreateConVar("ttt2_minigames_fov_scale", "1.5", {FCVAR_ARCHIVE}, "Scale of fov increase")
 end
 
 if SERVER then
+  local ttt2_minigames_fov_scale = CreateConVar("ttt2_minigames_fov_scale", "1.5", {FCVAR_ARCHIVE}, "Scale of fov increase")
   function MINIGAME:OnActivation()
     local plys = util.GetAlivePlayers()
     local changed_fov = {}

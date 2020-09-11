@@ -32,8 +32,6 @@ if CLIENT then
     }
   }
 else
-  ttt2_minigames_murder_knife_dmg = GetConVar("ttt2_minigames_murder_knife_dmg", "100", {FCVAR_ARCHIVE}, "Murder knife damage")
-  ttt2_minigames_murder_knife_speed = CreateConVar("ttt2_minigames_murder_knife_speed", "1.2", {FCVAR_ARCHIVE}, "Murder knife speed")
   util.AddNetworkString("MurderMinigameActive")
 end
 
@@ -46,6 +44,7 @@ function IsEvil(ply)
 end
 
 if SERVER then
+  local ttt2_minigames_murder_knife_speed = CreateConVar("ttt2_minigames_murder_knife_speed", "1.2", {FCVAR_ARCHIVE}, "Murder knife speed")
   function StripBannedWeapons(ply)
     for _, wep in ipairs(ply:GetWeapons()) do
       if wep.ClassName == "weapon_ttt_minigame_murknife" then continue end

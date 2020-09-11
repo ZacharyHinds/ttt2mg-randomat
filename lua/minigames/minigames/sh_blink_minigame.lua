@@ -30,12 +30,11 @@ if CLIENT then
       English = "They're coming for you..."
     }
   }
-else
-  ttt2_minigames_blink_cap = CreateConVar("ttt2_minigames_blink_cap", "12", {FCVAR_ARCHIVE}, "Max angels to spawn")
-  ttt2_minigames_blink_delay = CreateConVar("ttt2_minigames_blink_delay", "0.5", {FCVAR_ARCHIVE}, "Delay between angel spawns")
 end
 
 if SERVER then
+  local ttt2_minigames_blink_cap = CreateConVar("ttt2_minigames_blink_cap", "12", {FCVAR_ARCHIVE}, "Max angels to spawn")
+  local ttt2_minigames_blink_delay = CreateConVar("ttt2_minigames_blink_delay", "0.5", {FCVAR_ARCHIVE}, "Delay between angel spawns")
   function MINIGAME:OnActivation()
     local plys = util.GetAlivePlayers()
 

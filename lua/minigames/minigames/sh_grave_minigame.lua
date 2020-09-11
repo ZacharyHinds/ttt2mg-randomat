@@ -30,12 +30,11 @@ if CLIENT then
       English = "The dead will return as Infected!"
     }
   }
-else
-  ttt2_minigames_grave_health = CreateConVar("ttt2_minigames_grave_health", "30", {FCVAR_ARCHIVE}, "Health of Infected respawned")
-  ttt2_minigames_grave_delay = CreateConVar("ttt2_minigames_grave_delay", "3", {FCVAR_ARCHIVE}, "Respawn delay for minigame")
 end
 
 if SERVER then
+  local ttt2_minigames_grave_health = CreateConVar("ttt2_minigames_grave_health", "30", {FCVAR_ARCHIVE}, "Health of Infected respawned")
+  local ttt2_minigames_grave_delay = CreateConVar("ttt2_minigames_grave_delay", "3", {FCVAR_ARCHIVE}, "Respawn delay for minigame")
   function MINIGAME:OnActivation()
     hook.Add("PostPlayerDeath", "GraveMinigame", function(ply)
       if ply.RisenForRound == true then return end

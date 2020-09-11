@@ -28,13 +28,12 @@ if CLIENT then
       English = ""
     }
   }
-else
-  ttt2_minigames_harpoon_timer = CreateConVar("ttt2_minigames_harpoon_timer", "3", {FCVAR_ARCHIVE}, "Delay between being given harpoons")
-  ttt2_minigames_harpoon_strip = CreateConVar("ttt2_minigames_harpoon_strip", "1", {FCVAR_ARCHIVE}, "Should the minigame strip other weapons")
-  ttt2_minigames_harpoon_weaponid = CreateConVar("ttt2_minigames_harpoon_weaponid", "ttt_m9k_harpoon", {FCVAR_ARCHIVE}, "Should the minigame strip other weapons")
 end
 
 if SERVER then
+  local ttt2_minigames_harpoon_timer = CreateConVar("ttt2_minigames_harpoon_timer", "3", {FCVAR_ARCHIVE}, "Delay between being given harpoons")
+  local ttt2_minigames_harpoon_strip = CreateConVar("ttt2_minigames_harpoon_strip", "1", {FCVAR_ARCHIVE}, "Should the minigame strip other weapons")
+  local ttt2_minigames_harpoon_weaponid = CreateConVar("ttt2_minigames_harpoon_weaponid", "ttt_m9k_harpoon", {FCVAR_ARCHIVE}, "Should the minigame strip other weapons")
   function MINIGAME:OnActivation()
     local harpoon_class = ttt2_minigames_harpoon_weaponid:GetString()
     timer.Create("HarpoonMinigame", ttt2_minigames_harpoon_timer:GetInt(), 0, function ()

@@ -30,12 +30,11 @@ if CLIENT then
       English = "We learned to heal over time, its hard, but definitely possible..."
     }
   }
-else
-  ttt2_minigames_regen_delay = CreateConVar("ttt2_minigames_regen_delay", "10", {FCVAR_ARCHIVE}, "Delay after taking damage to start healing")
-  ttt2_minigames_regen_hp = CreateConVar("ttt2_minigames_regen_hp", "1", {FCVAR_ARCHIVE}, "Health healed per second")
 end
 
 if SERVER then
+  local ttt2_minigames_regen_delay = CreateConVar("ttt2_minigames_regen_delay", "10", {FCVAR_ARCHIVE}, "Delay after taking damage to start healing")
+  local ttt2_minigames_regen_hp = CreateConVar("ttt2_minigames_regen_hp", "1", {FCVAR_ARCHIVE}, "Health healed per second")
   function MINIGAME:OnActivation()
     local plys = player.GetAll()
     for i = 1, #plys do

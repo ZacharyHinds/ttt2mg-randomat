@@ -14,7 +14,7 @@ MINIGAME.conVarData = {
   }
 }
 
-ttt2_minigames_explode_timer = CreateConVar("ttt2_minigames_explode_timer", "30", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Delay between explosions")
+local ttt2_minigames_explode_timer = CreateConVar("ttt2_minigames_explode_timer", "30", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Delay between explosions")
 
 if CLIENT then
   MINIGAME.lang = {

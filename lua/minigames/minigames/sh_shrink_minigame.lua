@@ -24,11 +24,10 @@ if CLIENT then
       English = "Honey, I shrunk the terrorists!"
     }
   }
-else
-  ttt2_minigames_shrink_scale = CreateConVar("ttt2_minigames_shrink_scale", "0.5", {FCVAR_ARCHIVE}, "Shrinking scale factor")
 end
 
 if SERVER then
+  local ttt2_minigames_shrink_scale = CreateConVar("ttt2_minigames_shrink_scale", "0.5", {FCVAR_ARCHIVE}, "Shrinking scale factor")
   local rat = ttt2_minigames_shrink_scale:GetFloat()
   function MINIGAME:OnActivation()
     local scal = ttt2_minigames_shrink_scale:GetFloat()

@@ -24,11 +24,10 @@ if CLIENT then
       English = ""
     }
   }
-else
-  ttt2_minigames_moongravity_gravity = CreateConVar("ttt2_minigames_moongravity_gravity", "0.1", {FCVAR_ARCHIVE}, "Gravity multiplier")
 end
 
 if SERVER then
+  local ttt2_minigames_moongravity_gravity = CreateConVar("ttt2_minigames_moongravity_gravity", "0.1", {FCVAR_ARCHIVE}, "Gravity multiplier")
   function MINIGAME:OnActivation()
     local plys = player.GetAll()
     for i = 1, #plys do

@@ -21,7 +21,7 @@ MINIGAME.conVarData = {
   }
 }
 
-ttt2_minigames_freeze_timer = CreateConVar("ttt2_minigames_freeze_timer", "30", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Duration of Freeze")
+local ttt2_minigames_freeze_timer = CreateConVar("ttt2_minigames_freeze_timer", "30", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Duration of Freeze")
 
 if CLIENT then
   MINIGAME.lang = {

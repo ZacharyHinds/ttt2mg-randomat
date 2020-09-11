@@ -15,7 +15,7 @@ MINIGAME.conVarData = {
   }
 }
 
-ttt2_minigames_randomxn_count = CreateConVar("ttt2_minigames_randomxn_count", "5", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Number of games to activate")
+local ttt2_minigames_randomxn_count = CreateConVar("ttt2_minigames_randomxn_count", "5", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Number of games to activate")
 
 if CLIENT then
   MINIGAME.lang = {

@@ -23,11 +23,10 @@ if CLIENT then
       English = ""
     }
   }
-else
-  ttt2_minigames_gungame_timer = CreateConVar("ttt2_minigames_gungame_timer", "5", {FCVAR_ARCHIVE}, "Time between weapon changes")
 end
 
 if SERVER then
+  local ttt2_minigames_gungame_timer = CreateConVar("ttt2_minigames_gungame_timer", "5", {FCVAR_ARCHIVE}, "Time between weapon changes")
   function MINIGAME:OnActivation()
     local ents = ents.GetAll()
     local weps = weapons.GetList()

@@ -24,11 +24,10 @@ if CLIENT then
       English = ""
     }
   }
-else
-  ttt2_minigames_intensifies_timer = CreateConVar("ttt2_minigames_intensifies_timer", "20", {FCVAR_ARCHIVE}, "How often should a new game be activated")
 end
 
 if SERVER then
+  local ttt2_minigames_intensifies_timer = CreateConVar("ttt2_minigames_intensifies_timer", "20", {FCVAR_ARCHIVE}, "How often should a new game be activated")
   function MINIGAME:SelectGame()
     local mgs = minigames.GetList()
 

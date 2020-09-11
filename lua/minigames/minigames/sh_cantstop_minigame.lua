@@ -21,11 +21,10 @@ if CLIENT then
       English = "Won't Stop!"
     }
   }
-else
-  ttt2_minigames_cantstop_disable_back = CreateConVar("ttt2_minigames_cantstop_disable_back", "1", {FCVAR_ARCHIVE}, "Disable the \"s\" key")
 end
 
 if SERVER then
+  local ttt2_minigames_cantstop_disable_back = CreateConVar("ttt2_minigames_cantstop_disable_back", "1", {FCVAR_ARCHIVE}, "Disable the \"s\" key")
   function MINIGAME:OnActivation()
     hook.Add("Think", "CantStopMinigame", function()
       local plys = player.GetAll()

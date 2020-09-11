@@ -23,11 +23,10 @@ if CLIENT then
       English = ""
     }
   }
-else
-  ttt2_minigames_credits_count = CreateConVar("ttt2_minigames_credits_count", "1", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
 end
 
 if SERVER then
+  local ttt2_minigames_credits_count = CreateConVar("ttt2_minigames_credits_count", "1", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
   function MINIGAME:OnActivation()
     local plys = player.GetAll()
     timer.Create("CreditsMinigame", 0, 0, function()

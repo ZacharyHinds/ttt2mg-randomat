@@ -23,11 +23,10 @@ if CLIENT then
       English = ""
     }
   }
-else
-  ttt2_minigames_inventory_timer = CreateConVar("ttt2_minigames_inventory_timer", "15", {FCVAR_ARCHIVE}, "Time between inventory swaps")
 end
 
 if SERVER then
+  local ttt2_minigames_inventory_timer = CreateConVar("ttt2_minigames_inventory_timer", "15", {FCVAR_ARCHIVE}, "Time between inventory swaps")
   function MINIGAME:OnActivation()
     local ply1
     local ply2

@@ -23,11 +23,10 @@ if CLIENT then
       English = "Headcrabs will spawn on death."
     }
   }
-else
-  ttt2_minigames_crabs_count = CreateConVar("ttt2_minigames_crabs_count", "5", {FCVAR_ARCHIVE}, "How many crabs to spawn when someone dies")
 end
 
 if SERVER then
+  local ttt2_minigames_crabs_count = CreateConVar("ttt2_minigames_crabs_count", "5", {FCVAR_ARCHIVE}, "How many crabs to spawn when someone dies")
   function MINIGAME:OnActivation()
     hook.Add("PostPlayerDeath", "CrabMinigameSpawn", function(ply)
       if not IsValid(ply) then return end
