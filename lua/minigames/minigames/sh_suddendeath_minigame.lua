@@ -14,18 +14,15 @@ if CLIENT then
       English = ""
     }
   }
-else
-
 end
 
 if SERVER then
   function MINIGAME:OnActivation()
+    local plys = util.GetAlivePlayers()
     timer.Create("SuddenDeathMinigame", 1, 0, function()
-      for _, ply in ipairs(player.GetAll()) do
-        if not ply:Alive() or ply:IsSpec() then continue end
-
-        ply:SetHealth(1)
-        ply:SetMaxHealth(1)
+      for i = 1, #plys do
+        plys[i]:SetHealth(1)
+        plys[i]:SetMaxHealth(1)
       end
     end)
   end

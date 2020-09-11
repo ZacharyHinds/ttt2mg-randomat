@@ -14,8 +14,6 @@ if CLIENT then
       English = "None can hide from my sight!"
     }
   }
-else
-
 end
 
 if SERVER then

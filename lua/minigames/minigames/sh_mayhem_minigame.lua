@@ -14,13 +14,11 @@ if CLIENT then
       English = ""
     }
   }
-else
 end
 
 if SERVER then
   local doExplode = false
   function MINIGAME:OnActivation()
-    local effectData = EffectData()
     doExplode = true
 
     hook.Add("TTT2PostPlayerDeath", "MayhemMinigameExplode", function(ply, _, attacker)

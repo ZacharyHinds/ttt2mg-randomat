@@ -14,7 +14,6 @@ if CLIENT then
       English = ""
     }
   }
-else
 end
 
 if SERVER then

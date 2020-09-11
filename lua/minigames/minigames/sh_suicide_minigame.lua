@@ -14,7 +14,6 @@ if CLIENT then
       English = "So that's it. What, we some kind of suicide squad?"
     }
   }
-else
 end
 
 if SERVER then

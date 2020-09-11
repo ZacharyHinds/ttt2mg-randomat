@@ -31,15 +31,16 @@ if SERVER then
 
     local ply1 = {}
     local ply2 = {}
+    local plys = util.GetAlivePlayers()
 
-    for _, ply in ipairs(player.GetAll()) do
-      if not ply:Alive() or ply:IsSpec() then continue end
+    for i = 1, #plys do
+      local ply = plys[i]
 
       x = x + 1
       if math.floor(x / 2) ~= x / 2 then
-        table.insert(ply1, ply)
+        ply1[#ply1 + 1] = ply
       else
-        table.insert(ply2, ply)
+        ply2[#ply2 + 1] = ply
       end
     end
 
