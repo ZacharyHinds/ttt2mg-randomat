@@ -42,6 +42,7 @@ if SERVER then
     timer.Create("FOVMinigame", 0.1, 0, function()
       for i = 1, #plys do
         local ply = plys[i]
+        if not IsValid(ply) then continue end
         if ply:Alive() and not ply:IsSpec() then
           ply:SetFOV(changed_fov[ply], 0)
         else
