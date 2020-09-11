@@ -212,6 +212,10 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
 * ConVars:
   * ttt2_minigames_president_bonushp  - Bonus health gained by detective
 
+### We've Updated Our Privacy Policy
+* Name: sh_privacy_minigame
+* Description: Everyone is alerted when equipment is bought
+
 ### Random Health for everyone!
 * Name: sh_randomhealth_minigame
 * Description: Everyone gets random health.
@@ -308,7 +312,7 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
   * ttt2_minigames_murder_knife_dmg - Knife damage
   * ttt2_minigames_murder_knife_speed - Speed multiplier when holding knife
 * Known bugs / TODO:
-  * Gun pickups to Revolver code is sloppy and doesn't really work consitently
+  * Gun pickups to Revolver code is sloppy and doesn't really work consistently
   * Blind and drop weapon when innocent is shot is inconsistent
   * Knife animations are broken
   * TODO: Add throwing knife
@@ -319,10 +323,6 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
 
 
 ## TODO Minigames
-
-### We've updated our privacy policy.
-* Name: sh_privacy_minigame
-* Description: All players can see when someone buys something, no names just roles though.
 
 ### Bad Trip
 * Description: Players temporarily ragdoll when they jump
