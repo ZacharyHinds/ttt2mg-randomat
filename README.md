@@ -133,14 +133,11 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
 * Description: Gives everyone infinitely restocking harpoons.
 * Addon Dependencies:
   * [[Gamemode: TTT] Traitor Harpoon](https://steamcommunity.com/sharedfiles/filedetails/?id=456189236)
-  * It might work with other mods that add "ttt_m9k_harpoon" and I'm working on potentially fully removing this dependency in the near future
+  * Different weapons can be set with the ttt2_minigames_harpoon_weaponid ConVar
 * ConVars:
   * ttt2_minigames_harpoon_timer  - Delay between giving new harpoons
   * ttt2_minigames_harpoon_strip  - If enabled, the minigame strips all other weapons.
-  * ttt2_minigames_harpoon_weaponid - In theory, this should allow for replacing the weapon class for the harpoon with a custom one, but it isn't implemented yet
-* Known bugs / TODO:
-  * Harpoon stripping doesn't work properly
-  * ttt2_minigames_harpoon_weaponid is not implemented
+  * ttt2_minigames_harpoon_weaponid - Set the weapon class of the harpoon (or other weapon), by default is "ttt_m9k_harpoon"
 
 ### Randomness Intensifies
 * Name: sh_intensifies_minigame
