@@ -22,14 +22,15 @@ if SERVER then
     if ply.randomweptries == 100 then ply.randomweptries = nil return end
     ply.randomweptries = ply.randomweptries + 1
 
-    local weps = {}
-    for _, wep in ipairs(weapons.GetList()) do
+    local weps = weapons.GetList()
+    local pocket_weps = {}
+    for i = 1, #weps do
+      local wep = weps[i]
       if wep and wep.CanBuy then
-        table.insert(weps, wep)
+        pocket_weps[#pocket_weps + 1] = wep
       end
     end
-    table.Shuffle(weps)
-    local item = table.Random(weps)
+    local item = pocket_weps[math.random(#pocket_weps)]
     local is_item = tonumber(item.id)
     local swep_table = (not is_item) and weapons.GetStored(item.ClassName) or nil
 
