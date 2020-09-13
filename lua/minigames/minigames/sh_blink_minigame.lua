@@ -48,6 +48,7 @@ if SERVER then
       until IsValid(ply) and ply:Alive() and not ply:IsSpec()
 
       local ent = ents.Create("weepingangel")
+      if not IsValid(ent) then return end
       ent:SetPos(ply:GetAimVector())
       ent:Spawn()
       ent:Activate()
