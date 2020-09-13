@@ -35,9 +35,10 @@ if SERVER then
   function MINIGAME:OnActivation()
     timer.Create("ButterMinigame", ttt2_minigames_butter_timer:GetInt(), 0, function()
       local plys = util.GetAlivePlayers()
+      local ply
       if ttt2_minigames_butter_affectall:GetBool() then
         for i = 1, #plys do
-          local ply = plys[i]
+          ply = plys[i]
           local wep = ply:GetActiveWeapon()
           if not IsValid(wep) then continue end
 
@@ -51,7 +52,7 @@ if SERVER then
         repeat
           if #plys <= 0 then return end
           local rnd = math.random(#plys)
-          local ply = plys[rnd]
+          ply = plys[rnd]
           table.remove(plys, rnd)
         until IsValid(ply)
         local wep = ply:GetActiveWeapon()
