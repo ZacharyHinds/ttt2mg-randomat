@@ -28,19 +28,7 @@ end
 if SERVER then
   local ttt2_minigames_bees_count = CreateConVar("ttt2_minigames_bees_count", "4", {FCVAR_ARCHIVE}, "Number of bees spawned per person")
   local BeeNPC = "npc_manhack"
-  function RemovePly(plys, ply)
-    local j = 1
-    for i = 1, #plys do
-      if plys[i] ~= ply then
-        if i ~= j then
-          plys[j] = plys[i]
-        end
-        j = j + 1
-      else
-        plys[i] = nil
-      end
-    end
-  end
+  local bees = {}
 
   function MINIGAME:OnActivation()
     local plys = {}
@@ -53,16 +41,21 @@ if SERVER then
     end
 
     timer.Create("MinigameBees", 0.1, ttt2_minigames_bees_count:GetInt() * #plys, function()
-      local ply = plys[math.random(#plys)]
-      while not IsValid(ply) or not ply:Alive() and ply:IsSpec() and #plys > 0 do
-        plys = RemovePly(plys, ply)
-        ply = plys[math.random(1, #plys)]
-      end
+      local ply
+      repeat
+        if #plys <= 0 then return end
+
+        local rnd = math.random(#plys)
+        ply = plys[rnd]
+        table.remove(plys, rnd)
+      until IsValid(ply) and ply:Alive() and not ply:IsSpec()
 
       local spos = ply:GetPos() + Vector(math.random(-75, 75), math.random(-75, 75), math.random(200, 250))
       local headBee = SpawnNPC(ply, spos, BeeNPC)
       if not IsValid(headBee) then return end
       headBee:SetNPCState(2)
+      headBee:SetHealth(1000)
+      bees[#bees + 1] = headBee
 
       local Bee = ents.Create("prop_dynamic")
       if not IsValid(Bee) then return end
@@ -70,17 +63,12 @@ if SERVER then
       Bee:SetPos(spos)
       Bee:SetParent(headBee)
       headBee:SetNoDraw(true)
-      headBee:SetHealth(1000)
     end)
   end
 
   function BeeCleanup()
-    local entities = ents.GetAll()
-    for i = 1, #entities do
-      local ent = entities[i]
-      if ent:IsNPC() and ent:Classify(CLASS_MANHACK) then
-        ent:Remove()
-      end
+    for i = 1, #bees do
+      if IsValid(bees[i]) then bees[i]:Remove() end
     end
   end
 
