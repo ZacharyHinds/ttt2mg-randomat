@@ -36,29 +36,28 @@ if SERVER then
   local ttt2_minigames_blink_cap = CreateConVar("ttt2_minigames_blink_cap", "12", {FCVAR_ARCHIVE}, "Max angels to spawn")
   local ttt2_minigames_blink_delay = CreateConVar("ttt2_minigames_blink_delay", "0.5", {FCVAR_ARCHIVE}, "Delay between angel spawns")
   function MINIGAME:OnActivation()
-    local plys = util.GetAlivePlayers()
+    if ttt2_minigames_blink_cap:GetInt() <= 0 then return end
+    timer.Create("AngelMinigame", ttt2_minigames_blink_delay:GetFloat(), ttt2_minigames_blink_cap:GetInt(), function()
+      local plys = util.GetAlivePlayers()
+      local ply
+      repeat
+        if #plys <= 0 then return end
+        local rnd = math.random(#plys)
+        ply = plys[rnd]
+        table.remove(plys, rnd)
+      until IsValid(ply) and ply:Alive() and not ply:IsSpec()
 
-    local k = 1
-    timer.Create("AngelMinigame", ttt2_minigames_blink_delay:GetFloat(), 0, function()
-      if plys[k] then
-        local ply = plys[k]
-
-        while not ply:Alive() do
-          k = k + 1
-          ply = plys[k]
-        end
-        if k <= ttt2_minigames_blink_cap:GetInt() or ttt2_minigames_blink_cap:GetInt() == 0 then
-          local ent = ents.Create("weepingangel")
-          ent:SetPos(ply:GetAimVector())
-          ent:Spawn()
-          ent:Activate()
-
-          ent:SetVictim(ply)
-          ent:DropToFloor()
-        end
-        k = k + 1
-      end
+      local ent = ents.Create("weepingangel")
+      ent:SetPos(ply:GetAimVector())
+      ent:Spawn()
+      ent:Activate()
+      ent:SetVictim(ply)
+      ent:DropToFloor()
     end)
+  end
+
+  function MINIGAME:IsSelectable()
+    if ttt2_minigames_blink_cap:GetInt() <= 0 then return false end
   end
 
   function MINIGAME:OnDeactivation()
