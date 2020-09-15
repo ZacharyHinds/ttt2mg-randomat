@@ -55,7 +55,7 @@ if SERVER then
     hook.Remove("PostPlayerDeath", "PresidentMinigame")
   end
 
-  function MININGAME:IsSelectable()
+  function MINIGAME:IsSelectable()
     local plys = util.GetAlivePlayers()
     for i = 1, #plys do
       if plys[i]:GetBaseRole() == ROLE_DETECTIVE then return true end
