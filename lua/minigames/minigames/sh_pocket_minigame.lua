@@ -56,8 +56,9 @@ if SERVER then
 
   function MINIGAME:OnActivation()
     timer.Simple(0.1, function()
-      for _, ply in ipairs(player.GetAll()) do
-        if not ply:Alive() or ply:IsSpec() then continue end
+      local plys = util.GetAlivePlayers()
+      for i = 1, #plys do
+        local ply = plys[i]
         ply.randomweptries = 0
         GiveRandomWeapon(ply)
       end
