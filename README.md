@@ -78,6 +78,15 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
   * ttt2_minigames_crowbar_dmg  - Damage multiplier for the crowbar
   * ttt2_minigames_crowbar_push - Pushforce multiplier for the crowbar
 
+### Death comes...
+* Name: sh_dying_minigame
+* Description: Deals damage to a random player (or everyone) at a set interval
+* ConVars:
+  * ttt2_minigames_dying_timer  - How often damage is dealt
+  * ttt2_minigames_dying_dmg  - How much damage is dealt
+  * ttt2_minigames_dying_affectall  - Should everyone be damaged simultaneously
+  * ttt2_minigames_dying_cankill  - Should players be able to die from this minigame's damage
+
 ### Random Player Explosions!
 * Name: sh_explode_minigame
 * Description: At a set interval, a random player (excluding Detectives) explodes.
