@@ -26,7 +26,7 @@ if SERVER then
     local pocket_weps = {}
     for i = 1, #weps do
       local wep = weps[i]
-      if wep and wep.CanBuy then
+      if wep and (wep.CanBuy and #wep.CanBuy > 0) then
         pocket_weps[#pocket_weps + 1] = wep
       end
     end
