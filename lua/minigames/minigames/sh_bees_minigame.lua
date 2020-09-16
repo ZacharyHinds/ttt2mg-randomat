@@ -76,4 +76,8 @@ if SERVER then
     timer.Remove("MinigameBees")
     BeeCleanup()
   end
+
+  function MINIGAME:IsSelectable()
+    if not WEPS.IsInstalled("weapon_ttt_beenade") then return false end
+  end
 end

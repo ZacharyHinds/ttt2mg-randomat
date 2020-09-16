@@ -55,4 +55,8 @@ if SERVER then
   function MINIGAME:OnDeactivation()
     timer.Remove("HarpoonMinigame")
   end
+
+  function MINIGAME:IsSelectable()
+    if not WEPS.IsInstalled(ttt2_minigames_harpoon_weaponid:GetString()) then return false end
+  end
 end

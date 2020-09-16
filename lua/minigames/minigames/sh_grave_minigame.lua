@@ -59,4 +59,8 @@ if SERVER then
   function MINIGAME:OnDeactivation()
     hook.Remove("PostPlayerDeath", "GraveMinigame")
   end
+
+  function MINIGAME:IsSelectable()
+    if not INFECTED then return false end
+  end
 end

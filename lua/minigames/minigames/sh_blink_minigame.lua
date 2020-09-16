@@ -72,4 +72,8 @@ if SERVER then
       angels[i]:Remove()
     end
   end
+
+  function MINIGAME:IsSelectable()
+    if not WEPS.IsInstalled("ttt_weeping_angel") then return false end
+  end
 end

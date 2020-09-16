@@ -32,4 +32,8 @@ if SERVER then
   function MINIGAME:OnDeactivation()
 
   end
+
+  function MINIGAME:IsSelectable()
+    if not SPY then return false end
+  end
 end
