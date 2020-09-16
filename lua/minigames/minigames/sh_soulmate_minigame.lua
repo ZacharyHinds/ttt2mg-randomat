@@ -63,7 +63,8 @@ if SERVER then
       end
 
     else
-      for _, ply in ipairs(player.GetAll()) do
+      for i = 1, #plys do
+        local ply = plys[i]
         ply:PrintMessage(HUD_PRINTTALK, ply1[1]:Nick() .. " and " .. ply2[2]:Nick() .. " are now soulmates.")
         ply:PrintMessage(HUD_PRINTCENTER, ply1[1]:Nick() .. " and " .. ply2[2]:Nick() .. " are now soulmates.")
       end
