@@ -73,13 +73,6 @@ if SERVER then
         end
       else
         ply:SetRole(ROLE_JESTER)
-        local weps = ply:GetWeapons()
-        for j = 1, #weps do
-          local wep = weps[i]
-          if wep.Kind == WEAPON_EQUIP1 or wep.Kind == WEAPON_EQUIP2 then
-            ply:StripWeapon(wep:GetClass())
-          end
-        end
       end
     end
     SendFullStateUpdate()
