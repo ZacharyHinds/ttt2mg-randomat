@@ -34,6 +34,10 @@ if SERVER then
   end
 
   function MINIGAME:IsSelectable()
-    if not SPY then return false end
+    if not SPY then
+      return false
+    else
+      return true
+    end
   end
 end

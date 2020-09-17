@@ -78,6 +78,10 @@ if SERVER then
   end
 
   function MINIGAME:IsSelectable()
-    if not WEPS.IsInstalled("weapon_ttt_beenade") then return false end
+    if not WEPS.IsInstalled("weapon_ttt_beenade") then
+      return false
+    else
+      return true
+    end
   end
 end

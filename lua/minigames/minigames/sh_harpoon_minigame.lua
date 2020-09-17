@@ -57,6 +57,10 @@ if SERVER then
   end
 
   function MINIGAME:IsSelectable()
-    if not WEPS.IsInstalled(ttt2_minigames_harpoon_weaponid:GetString()) then return false end
+    if not WEPS.IsInstalled(ttt2_minigames_harpoon_weaponid:GetString()) then
+      return false
+    else
+      return true
+    end
   end
 end

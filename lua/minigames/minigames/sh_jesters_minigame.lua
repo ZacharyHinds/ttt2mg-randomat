@@ -48,7 +48,11 @@ if SERVER then
   end
 
   function MINIGAME:IsSelectable()
-    return DetectiveCheck()
+    if JESTER then
+      return DetectiveCheck()
+    else
+      return false
+    end
   end
 
   function MINIGAME:OnActivation()
@@ -82,7 +86,4 @@ if SERVER then
 
   end
 
-  function MINIGAME:IsSelectable()
-    if not JESTER then return false end
-  end
 end

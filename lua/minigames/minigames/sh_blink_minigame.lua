@@ -74,6 +74,10 @@ if SERVER then
   end
 
   function MINIGAME:IsSelectable()
-    if not WEPS.IsInstalled("ttt_weeping_angel") then return false end
+    if not WEPS.IsInstalled("ttt_weeping_angel") then
+      return false
+    else
+      return true
+    end
   end
 end

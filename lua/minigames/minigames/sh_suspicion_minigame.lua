@@ -92,4 +92,11 @@ if CLIENT then
       client:PrintMessage(HUD_PRINTTALK, ply:Nick() .. " seems suspicious")
     end
   end)
+  function MINIGAME:IsSelectable()
+    if JESTER then
+      return true
+    else
+      return false
+    end
+  end
 end
