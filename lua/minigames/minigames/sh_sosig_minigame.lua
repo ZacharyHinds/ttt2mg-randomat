@@ -37,7 +37,7 @@ if SERVER then
         for i = 1, #plys do
           local weps = plys[i]:GetWeapons()
           for j = 1, #weps do
-            if not weps[i].Primary then continue end
+            if not weps[j].Primary then continue end
             weps[j].Primary.Sound = "weapons/sosig.mp3"
           end
         end
