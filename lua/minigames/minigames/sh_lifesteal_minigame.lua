@@ -49,6 +49,6 @@ if SERVER then
   end
 
   function MINIGAME:OnDeactivation()
-    hook.Remove("PostPlayerDeath", "LifestealMinigame")
+    hook.Remove("TTT2PostPlayerDeath", "LifestealMinigame")
   end
 end
