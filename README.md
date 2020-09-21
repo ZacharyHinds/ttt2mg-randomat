@@ -111,6 +111,9 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
 * ConVars:
   * ttt2_minigames_freeze_timer - Time between freezes
   * ttt2_minigames_freeze_duration - Duration of freeze
+  * ttt2_minigames_freeze_quotes  - Replace minigame name with ice-related pop culture quotes for pop up
+  * ttt2_minigames_freeze_desc  - Show the minigame explanation
+
 
 ### Bad Gas!
 * Name: sh_gas_minigame
