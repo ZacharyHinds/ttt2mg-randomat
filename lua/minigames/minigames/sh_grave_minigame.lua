@@ -38,6 +38,7 @@ if SERVER then
   function MINIGAME:OnActivation()
     hook.Add("PostPlayerDeath", "GraveMinigame", function(ply)
       if ply.RisenForRound == true then return end
+      -- local revivalreason = LANG.TryTranslation("ttt2_minigames_" .. self.name .. "_name")
 
       ply:Revive(
         ttt2_minigames_grave_delay:GetInt(),
@@ -52,7 +53,7 @@ if SERVER then
         true,
         false
       )
-      ply:SendRevivalReason("RISE FROM YOUR GRAVE!")
+      ply:SendRevivalReason("ttt2_minigames_" .. self.name .. "_name")
     end)
   end
 

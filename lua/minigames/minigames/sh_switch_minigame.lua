@@ -62,10 +62,12 @@ end
 if CLIENT then
   net.Receive("switch_minigame_popup", function()
     EPOP:AddMessage({
-      text = "Go!",
+      text = LANG.TryTranslation("ttt2mg_switch_epop"),
       color = COLOR_ORANGE},
-      "",
-      2
+      nil,
+      2,
+      nil,
+      true
     )
   end)
 end

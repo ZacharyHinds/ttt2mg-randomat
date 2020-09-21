@@ -32,11 +32,11 @@ if SERVER then
   function MINIGAME:OnActivation()
     local plys = util.GetAlivePlayers()
     table.Shuffle(plys)
-    local suspicion_ply = plys[math.random(#plys)]
 
-    while not suspicion_ply:Alive() or suspicion_ply:IsSpec() or suspicion_ply:GetBaseRole() == ROLE_DETECTIVE do
-      suspicion_ply = plys[math]
-    end
+    local suspicion_ply = plys[math.random(#plys)]
+    -- while not suspicion_ply:Alive() or suspicion_ply:IsSpec() or suspicion_ply:GetBaseRole() == ROLE_DETECTIVE do
+    --   suspicion_ply = plys[math.random(#plys)]
+    -- end
 
     if not suspicion_ply:IsPlayer() then return end
 
@@ -53,45 +53,7 @@ if SERVER then
     end)
   end
 
-  function MINIGAME:OnDeactivation()
 
-  end
-end
-
-if CLIENT then
-  net.Receive("suspicion_minigame_popup", function()
-    local ply = net.ReadEntity()
-    local client = LocalPlayer()
-
-    if client:HasTeam(TEAM_TRAITOR) then
-      if ply:GetSubRole() == ROLE_TRAITOR then
-        EPOP:AddMessage({
-          text = ply:Nick() .. " is a traitor",
-          color = COLOR_RED
-          },
-          "",
-          4
-        )
-        client:PrintMessage(HUD_PRINTTALK, ply:Nick() .. " is a traitor")
-      elseif ply:GetSubRole() == ROLE_JESTER then
-        EPOP:AddMessage(
-          {text = ply:Nick() .. " is a jester",
-          color = JESTER.ltcolor},
-          "",
-          4
-        )
-        client:PrintMessage(HUD_PRINTTALK, ply:Nick() .. " is a jester")
-      end
-    else
-      EPOP:AddMessage(
-        {text = ply:Nick() .. " seems suspicious...",
-        color = COLOR_ORANGE},
-        "",
-        4
-      )
-      client:PrintMessage(HUD_PRINTTALK, ply:Nick() .. " seems suspicious")
-    end
-  end)
   function MINIGAME:IsSelectable()
     if JESTER then
       return true
@@ -99,4 +61,47 @@ if CLIENT then
       return false
     end
   end
+end
+
+if CLIENT then
+  function MINIGAME:ShowActivationEPOP()
+
+  end
+  net.Receive("suspicion_minigame_popup", function()
+    local ply = net.ReadEntity()
+    local client = LocalPlayer()
+    local plynick = ply:Nick()
+    local sus_str = LANG.GetParamTranslation("ttt2mg_suspicion_epop_sus", {nick = plynick})
+    local jes_str = LANG.GetParamTranslation("ttt2mg_suspicion_epop_jes", {nick = plynick})
+    local tra_str = LANG.GetParamTranslation("ttt2mg_suspicion_epop_tra", {nick = plynick})
+
+    if client:HasTeam(TEAM_TRAITOR) then
+      if ply:GetSubRole() == ROLE_TRAITOR then
+        EPOP:AddMessage({
+          text = tra_str,
+          color = COLOR_RED
+          },
+          "",
+          6
+        )
+        client:PrintMessage(HUD_PRINTTALK, tra_str)
+      elseif ply:GetSubRole() == ROLE_JESTER then
+        EPOP:AddMessage(
+          {text = jes_str,
+          color = JESTER.ltcolor},
+          "",
+          6
+        )
+        client:PrintMessage(HUD_PRINTTALK, jes_str)
+      end
+    else
+      EPOP:AddMessage(
+        {text = sus_str,
+        color = COLOR_ORANGE},
+        "",
+        6
+      )
+      client:PrintMessage(HUD_PRINTTALK, sus_str)
+    end
+  end)
 end

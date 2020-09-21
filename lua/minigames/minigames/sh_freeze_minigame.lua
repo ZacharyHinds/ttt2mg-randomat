@@ -18,10 +18,19 @@ MINIGAME.conVarData = {
     min = 1,
     max = 60,
     desc = "(Def. 30)"
+  },
+
+  ttt2_minigames_freeze_quotes = {
+    checkbox = true,
+    desc = "(Def. 1)"
+  },
+
+  ttt2_minigames_freeze_desc = {
+    checkbox = true,
+    desc = "(Def. 0)"
   }
 }
 
-local ttt2_minigames_freeze_timer = CreateConVar("ttt2_minigames_freeze_timer", "30", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Duration of Freeze")
 
 if CLIENT then
   MINIGAME.lang = {
@@ -29,16 +38,29 @@ if CLIENT then
       English = "Freeze!"
     },
     desc = {
-      English = "All Innocents will freeze (and become immune) every " .. ttt2_minigames_freeze_timer:GetInt() .. " seconds"
+      English = "All Innocents will freeze (and become immune) every {time} seconds"
     }
   }
 else
-  ttt2_minigames_freeze_duration = CreateConVar("ttt2_minigames_freeze_duration", "5", {FCVAR_ARCHIVE}, "Delay between freezes")
   util.AddNetworkString("freeze_minigame_popup")
+  util.AddNetworkString("ttt2mg_freeze_epop")
 end
 
 if SERVER then
+  local ttt2_minigames_freeze_timer = CreateConVar("ttt2_minigames_freeze_timer", "30", {FCVAR_ARCHIVE}, "Duration of Freeze")
+  local ttt2_minigames_freeze_duration = CreateConVar("ttt2_minigames_freeze_duration", "5", {FCVAR_ARCHIVE}, "Delay between freezes")
+  local ttt2_minigames_freeze_quotes = CreateConVar("ttt2_minigames_freeze_quotes", "1", {FCVAR_ARCHIVE}, "Use quotes instead of minigame name")
+  local ttt2_minigames_freeze_desc = CreateConVar("ttt2_minigames_freeze_desc", "0", {FCVAR_ARCHIVE}, "Show minigame description")
+  function MINIGAME:ShowActivationEPOP()
+    net.Start("ttt2mg_freeze_epop")
+    net.WriteBool(ttt2_minigames_freeze_quotes:GetBool())
+    net.WriteBool(ttt2_minigames_freeze_desc:GetBool())
+    net.WriteInt(ttt2_minigames_freeze_timer:GetInt(), 32)
+    net.WriteString(self.name)
+    net.Broadcast()
+  end
   function MINIGAME:OnActivation()
+    self:ShowActivationEPOP()
     timer.Create("FreezeMinigame", ttt2_minigames_freeze_timer:GetInt(), 0, function()
       net.Start("freeze_minigame_popup")
       net.Broadcast()
@@ -71,12 +93,45 @@ if SERVER then
 end
 
 if CLIENT then
+  function MINIGAME:ShowActivationEPOP()
+
+  end
+  net.Receive("ttt2mg_freeze_epop", function()
+    local isQuote = net.ReadBool()
+    local showDesc = net.ReadBool()
+    local mgtime = net.ReadInt(32)
+    local name = net.ReadString()
+    if isQuote then
+      EPOP:AddMessage({
+          text = LANG.TryTranslation("ttt2mg_freeze_epop_" .. math.random(15)),
+          color = COLOR_ORANGE
+        },
+        shoDesc and LANG.GetParamTranslation("ttt2_minigames_" .. name .. "_desc", {time = mgtime}),
+        12,
+        nil,
+        true
+      )
+    else
+      EPOP:AddMessage({
+          text = LANG.TryTranslation("ttt2_minigames_" .. name .. "_name"),
+          color = COLOR_ORANGE
+      },
+        showDesc and LANG.GetParamTranslation("ttt2_minigames_" .. name .. "_desc", {time = mgtime}),
+        12,
+        nil,
+        true
+      )
+    end
+  end)
+
   net.Receive("freeze_minigame_popup", function()
     EPOP:AddMessage({
       text = "Freeze!",
       color = Color(19, 159, 235, 255)},
-      "",
-      1
+      nil,
+      5,
+      nil,
+      true
     )
   end)
 end

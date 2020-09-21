@@ -71,11 +71,12 @@ if SERVER then
 end
 
 if CLIENT then
+  function MINIMGAME:ShowActivationEPOP() end
   net.Receive("explosion_minigame_exploded", function()
     local name = net.ReadString()
 
     EPOP:AddMessage({
-      text = name .. " exploded!",
+      text = LANG.GetParamTranslation("ttt2mg_explode_epop", {nick = name}),
       color = COLOR_ORANGE,
       6
     })

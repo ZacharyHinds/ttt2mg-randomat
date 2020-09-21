@@ -22,31 +22,34 @@ if SERVER then
   function MINIGAME:OnActivation()
     hook.Add("TTTOrderedEquipment", "PrivacyMinigameNotification", function(ply, equipment, is_item)
         local rolename = ply:GetRoleString()
+        local rolecolor = ply:GetRoleLtColor() or COLOR_ORANGE
+
 
         net.Start("privacy_mg_notif")
         net.WriteString(rolename)
-        net.WriteEntity(ply)
-        net.WriteTable(ply:GetRoleColor())
+        net.WriteColor(rolecolor)
         net.WriteString(equipment)
-        net.WriteBool(is_item)
         net.Broadcast()
     end)
   end
 
   function MINIGAME:OnDeactivation()
-
+    hook.Remove("TTTOrderedEquipment", "PrivacyMinigameNotification")
   end
 elseif CLIENT then
   net.Receive("privacy_mg_notif", function()
     local rolename = net.ReadString()
-    local rolecolor = net.ReadTable()
+    local rolecolor = net.ReadColor()
     local equipment = net.ReadString()
+    equipment = LANG.TryTranslation(equipment) or equipment
 
     EPOP:AddMessage({
-      text = rolename .. " bought " .. equipment,
+      text = LANG.GetParamTranslation("ttt2mg_privacy_epop", {role = rolename, item = equipment}),
       color = rolecolor},
-      "",
-      2
+      nil,
+      4,
+      nil,
+      true
     )
   end)
 end
