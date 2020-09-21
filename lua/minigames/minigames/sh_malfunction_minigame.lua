@@ -10,19 +10,19 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 60,
-    desc = "(Def. 15)"
+    desc = "ttt2_minigames_malfunction_up (Def. 15)"
   },
 
   ttt2_minigames_malfunction_lw = {
     slider = true,
     min = 0,
     max = 60,
-    desc = "(Def. 1)"
+    desc = "ttt2_minigames_malfunction_lw (Def. 1)"
   },
 
   ttt2_minigames_malfunction_all = {
     checkbox = true,
-    desc = "(Def. 0)"
+    desc = "ttt2_minigames_malfunction_all (Def. 0)"
   },
 
   ttt2_minigames_malfunction_dur = {
@@ -30,7 +30,7 @@ MINIGAME.conVarData = {
     min = 0,
     max = 3,
     decimal = 1,
-    desc = "(Def. 0.5)"
+    desc = "ttt2_minigames_malfunction_dur (Def. 0.5)"
   }
 }
 

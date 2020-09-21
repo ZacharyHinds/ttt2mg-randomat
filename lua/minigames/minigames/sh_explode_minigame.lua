@@ -10,7 +10,7 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 120,
-    desc = "(Def. 30)"
+    desc = "ttt2_minigames_explode_timer (Def. 30)"
   }
 }
 
@@ -71,11 +71,12 @@ if SERVER then
 end
 
 if CLIENT then
+  function MINIMGAME:ShowActivationEPOP() end
   net.Receive("explosion_minigame_exploded", function()
     local name = net.ReadString()
 
     EPOP:AddMessage({
-      text = name .. " exploded!",
+      text = LANG.GetParamTranslation("ttt2mg_explode_epop", {nick = name}),
       color = COLOR_ORANGE,
       6
     })

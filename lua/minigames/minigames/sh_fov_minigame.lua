@@ -11,7 +11,7 @@ MINIGAME.conVarData = {
     min = 0,
     max = 3,
     decimal = 1,
-    desc = "(Def. 1.5)"
+    desc = "ttt2_minigames_fov_scale (Def. 1.5)"
   }
 }
 

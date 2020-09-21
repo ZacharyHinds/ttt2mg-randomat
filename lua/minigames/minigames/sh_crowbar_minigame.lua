@@ -11,13 +11,13 @@ MINIGAME.conVarData = {
     min = 1,
     max = 10,
     decimal = 1,
-    desc = "(Def. 2.5)"
+    desc = "ttt2_minigames_crowbar_dmg (Def. 2.5)"
   },
   ttt2_minigames_crowbar_push = {
     slider = true,
     min = 1,
     max = 100,
-    desc = "(Def. 20)"
+    desc = "ttt2_minigames_crowbar_push (Def. 20)"
   }
 }
 

@@ -10,7 +10,7 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 1000,
-    desc = "(Def. 100)"
+    desc = "ttt2_minigames_murder_knife_dmg (Def. 100)"
   },
 
   ttt2_minigames_murder_knife_speed = {
@@ -18,7 +18,7 @@ MINIGAME.conVarData = {
     min = 1,
     max = 2,
     decimal = 1,
-    desc = "(Def. 1.2)"
+    desc = "ttt2_minigames_murder_knife_speed (Def. 1.2)"
   }
 }
 

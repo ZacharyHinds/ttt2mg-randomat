@@ -40,45 +40,45 @@ SWEP.Primary.Ammo = "none"
 SWEP.Primary.ClipsSize = 1
 SWEP.Primary.DefaultClip = 1
 
-function SWEP:SelectGame()
-  if SERVER then
-    local mgs = minigames.GetList()
-
-    if #mgs == 0 then return end
-
-    local availableMinigames = {}
-    local forcedNextMinigame = minigames.GetForcedNextMinigame()
-
-    for i = 1, #mgs do
-      local minigame = mgs[i]
-
-      if not GetConVar("ttt2_minigames_" .. minigame.name .. "_enabled"):GetBool() or not minigame:IsSelectable() then continue end
-
-      if forcedNextMinigame and forcedNextMinigame.name == minigame.name then
-        forcedNextMinigame = nil
-        return minigame
-      end
-
-      local b = true
-
-      local r = GetConVar("ttt2_minigames_" .. minigame.name .. "_random"):GetInt()
-
-      if r > 0 and r < 100 then
-        b = math.random(100) <= r
-      elseif r <= 0 then
-        b = false
-      end
-
-      if b then
-        availableMinigames[#availableMinigames + 1] = minigame
-      end
-    end
-
-    if #availableMinigames == 0 then return end
-
-    return availableMinigames[math.random(#availableMinigames)]
-  end
-end
+-- function SWEP:SelectGame()
+--   if SERVER then
+--     local mgs = minigames.GetList()
+--
+--     if #mgs == 0 then return end
+--
+--     local availableMinigames = {}
+--     local forcedNextMinigame = minigames.GetForcedNextMinigame()
+--
+--     for i = 1, #mgs do
+--       local minigame = mgs[i]
+--
+--       if not GetConVar("ttt2_minigames_" .. minigame.name .. "_enabled"):GetBool() or not minigame:IsSelectable() then continue end
+--
+--       if forcedNextMinigame and forcedNextMinigame.name == minigame.name then
+--         forcedNextMinigame = nil
+--         return minigame
+--       end
+--
+--       local b = true
+--
+--       local r = GetConVar("ttt2_minigames_" .. minigame.name .. "_random"):GetInt()
+--
+--       if r > 0 and r < 100 then
+--         b = math.random(100) <= r
+--       elseif r <= 0 then
+--         b = false
+--       end
+--
+--       if b then
+--         availableMinigames[#availableMinigames + 1] = minigame
+--       end
+--     end
+--
+--     if #availableMinigames == 0 then return end
+--
+--     return availableMinigames[math.random(#availableMinigames)]
+--   end
+-- end
 
 function SWEP:Initialize()
   util.PrecacheSound("weapons/c4_initiate.wav")
@@ -87,14 +87,14 @@ end
 function SWEP:PrimaryAttack()
   if SERVER then
     print("1")
-    minigame = self:SelectGame()
+    minigame = minigames.Select()
     if not minigame then self:Remove() return end
     print("Minigame Found")
 
     ActivateMinigame(minigame)
     print("Minigame Activated")
 
-    DamageLog("[TTT2][MINIGAME] : " .. self:GetOwner():Nick() .. " [" .. self.Owner:GetRoleString() .. "] used their Gameboy")
+    DamageLog("[TTT2][MINIGAME] : " .. self:GetOwner():Nick() .. " [" .. self:GetOwner():GetRoleString() .. "] used their Randomat X")
     self:SetNextPrimaryFire(CurTime() + 10)
 
     self:Remove()

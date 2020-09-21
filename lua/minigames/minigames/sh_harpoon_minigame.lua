@@ -10,12 +10,12 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 30,
-    desc = "(Def. 3)"
+    desc = "ttt2_minigames_harpoon_timer (Def. 3)"
   },
 
   ttt2_minigames_harpoon_strip = {
     checkbox = true,
-    desc = "(Def. 1)"
+    desc = "ttt2_minigames_harpoon_strip (Def. 1)"
   },
 }
 

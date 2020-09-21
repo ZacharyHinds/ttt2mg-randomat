@@ -10,27 +10,27 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 10,
-    desc = "(Def. 15)"
+    desc = "ttt2_minigames_gas_timer (Def. 15)"
   },
 
   ttt2_minigames_gas_affectall = {
     checkbox = true,
-    desc = "(Def. 0)"
+    desc = "ttt2_minigames_gas_affectall (Def. 0)"
   },
 
   ttt2_minigames_gas_discomb = {
     checkbox = true,
-    desc = "(Def. 1)"
+    desc = "ttt2_minigames_gas_discomb (Def. 1)"
   },
 
   ttt2_minigames_gas_fire = {
     checkbox = true,
-    desc = "(Def. 0)"
+    desc = "ttt2_minigames_gas_fire (Def. 0)"
   },
 
   ttt2_minigames_gas_smoke = {
     checkbox = true,
-    desc = "(Def. 0)"
+    desc = "ttt2_minigames_gas_smoke (Def. 0)"
   }
 }
 

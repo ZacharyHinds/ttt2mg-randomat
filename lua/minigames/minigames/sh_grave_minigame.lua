@@ -10,14 +10,14 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 100,
-    desc = "(Def. 30)"
+    desc = "ttt2_minigames_grave_health (Def. 30)"
   },
 
   ttt2_minigames_grave_delay = {
     slider = true,
     min = 0,
     max = 60,
-    desc = "(Def. 3)"
+    desc = "ttt2_minigames_grave_delay (Def. 3)"
   }
 }
 
@@ -38,6 +38,7 @@ if SERVER then
   function MINIGAME:OnActivation()
     hook.Add("PostPlayerDeath", "GraveMinigame", function(ply)
       if ply.RisenForRound == true then return end
+      -- local revivalreason = LANG.TryTranslation("ttt2_minigames_" .. self.name .. "_name")
 
       ply:Revive(
         ttt2_minigames_grave_delay:GetInt(),
@@ -52,7 +53,7 @@ if SERVER then
         true,
         false
       )
-      ply:SendRevivalReason("RISE FROM YOUR GRAVE!")
+      ply:SendRevivalReason("ttt2_minigames_" .. self.name .. "_name")
     end)
   end
 

@@ -10,7 +10,7 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 60,
-    desc = "(Def. 5)"
+    desc = "ttt2_minigames_gungame_timer (Def. 5)"
   }
 }
 

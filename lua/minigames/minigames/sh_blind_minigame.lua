@@ -10,7 +10,7 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 60,
-    desc = "(Def. 30)"
+    desc = "ttt2_minigames_blind_duration (Def. 30)"
   }
 }
 

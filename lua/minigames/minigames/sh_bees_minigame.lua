@@ -10,7 +10,7 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 10,
-    desc = "(Def. 0)"
+    desc = "ttt2_minigames_bees_count (Def. 4)"
   }
 }
 

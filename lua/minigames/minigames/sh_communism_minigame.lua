@@ -35,7 +35,7 @@ if SERVER then
       net.Start("ttt2_communism_orderpopup")
       net.WriteString(ply:GetRoleString())
       net.WriteString(equipment)
-      net.WriteTable(ply:GetRoleColor())
+      net.WriteColor(ply:GetRoleColor())
       net.Broadcast()
     end)
   end
@@ -47,9 +47,9 @@ elseif CLIENT then
   net.Receive("ttt2_communism_orderpopup", function()
     local rolestring = net.ReadString()
     local equipment = net.ReadString()
-    local rolecolor = net.ReadTable()
+    local rolecolor = net.ReadColor()
     EPOP:AddMessage({
-      text = rolestring .. " bought everyone " .. equipment,
+      text = LANG.GetParamTranslation("ttt2mg_communism_epop", {role = rolestring, item = equipment}),
       color = rolecolor},
       "",
       2

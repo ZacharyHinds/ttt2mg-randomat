@@ -10,7 +10,7 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 60,
-    desc = "(Def. 15)"
+    desc = "ttt2_minigames_switch_timer (Def. 15)"
   }
 }
 
@@ -62,10 +62,12 @@ end
 if CLIENT then
   net.Receive("switch_minigame_popup", function()
     EPOP:AddMessage({
-      text = "Go!",
+      text = LANG.TryTranslation("ttt2mg_switch_epop"),
       color = COLOR_ORANGE},
-      "",
-      2
+      nil,
+      2,
+      nil,
+      true
     )
   end)
 end

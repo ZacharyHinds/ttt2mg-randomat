@@ -10,11 +10,11 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 30,
-    desc = "(Def. 10)"
+    desc = "ttt2_minigames_butter_timer (Def. 10)"
   },
   ttt2_minigames_butter_affectall = {
     checkbox = true,
-    desc = "(Def. 0)"
+    desc = "ttt2_minigames_butter_affectall (Def. 0)"
   }
 }
 

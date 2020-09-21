@@ -10,7 +10,7 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 200,
-    desc = "(Def. 100)"
+    desc = "ttt2_minigames_president_bonushp (Def. 100)"
   }
 }
 

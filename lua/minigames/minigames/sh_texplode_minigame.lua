@@ -10,18 +10,17 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 120,
-    desc = "(Def. 60)"
+    desc = "ttt2_minigames_texplode_timer (Def. 60)"
   },
 
   ttt2_minigames_texplode_radius = {
     slider = true,
     min = 1,
     max = 1000,
-    desc = "(Def. 600)"
+    desc = "ttt2_minigames_texplode_radius (Def. 600)"
   }
 }
 
-local ttt2_minigames_texplode_timer = CreateConVar("ttt2_minigames_texplode_timer", "60", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "How many credits should be available at a time?")
 
 if CLIENT then
   MINIGAME.lang = {
@@ -29,16 +28,25 @@ if CLIENT then
       English = "Explosive Traitors"
     },
     desc = {
-      English = "A traitor will explode in " .. ttt2_minigames_texplode_timer:GetInt() .. " seconds!"
+      English = "A traitor will explode in {time} seconds!"
     }
   }
 else
   util.AddNetworkString("texplode_popup")
+  util.AddNetworkString("ttt2mg_texplode_epop")
 end
 
 if SERVER then
+local ttt2_minigames_texplode_timer = CreateConVar("ttt2_minigames_texplode_timer", "60", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "How many credits should be available at a time?")
 local ttt2_minigames_texplode_radius = CreateConVar("ttt2_minigames_texplode_radius", "600", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
+  function MINIGAME:ShowActivationEPOP()
+    net.Start("ttt2mg_texplode_epop")
+    net.WriteInt(ttt2_minigames_explode_timer:GetInt(), 32)
+    net.WriteString(self.name)
+    net.Broadcast()
+  end
   function MINIGAME:OnActivation()
+    self:ShowActivationEPOP()
     local x = 0
     local willExplode = true
 
@@ -64,15 +72,15 @@ local ttt2_minigames_texplode_radius = CreateConVar("ttt2_minigames_texplode_rad
       x = x + 1
       if delay >= 45 and x == delay - 30 then
         net.Start("texplode_popup")
-        net.WriteString("30 seconds until the traitor explodes!")
+        net.WriteString("ttt2mg_texplode_countdown_30")
         net.Broadcast()
       elseif delay >= 20 and x == delay - 10 then
         net.Start("texplode_popup")
-        net.WriteString("10 seconds remaining!")
+        net.WriteString("ttt2mg_texplode_countdown_10")
         net.Broadcast()
       elseif delay == x then
         net.Start("texplode_popup")
-        net.WriteString("The traitor has exploded!")
+        net.WriteString("ttt2mg_texplode_explode")
         net.Broadcast()
         tgt:EmitSound("ambient/explosions/explode_4.wav")
 
@@ -92,14 +100,28 @@ local ttt2_minigames_texplode_radius = CreateConVar("ttt2_minigames_texplode_rad
   end
 
 elseif CLIENT then
+  function MINIGAME:ShowActivationEPOP() end
+  net.Receive("ttt2mg_texplode_epop", function()
+    local mgtime = net.ReadInt(32)
+    local name = net.ReadString()
+    EPOP:AddMessage({
+        text = LANG.TryTranslation("ttt2_minigames_" .. name .. "_name"),
+        color = COLOR_ORANGE
+    },
+      LANG.GetParamTranslation("ttt2_minigames_" .. name .. "_desc", {time = mgtime}) or nil,
+      12,
+      nil,
+      true
+    )
+  end)
   net.Receive("texplode_popup", function()
     message = net.ReadString()
     if message then
       EPOP:AddMessage(
-        {text = message,
+        {text = LANG.TryTranslation(message),
         color = COLOR_ORANGE},
         "",
-        2
+        4
       )
     end
   end)

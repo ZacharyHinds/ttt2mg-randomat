@@ -11,7 +11,7 @@ MINIGAME.conVarData = {
     min = 0,
     max = 1,
     decimal = 1,
-    desc = "(Def. 0.5)"
+    desc = "ttt2_minigames_shrink_scale (Def. 0.5)"
   }
 }
 

@@ -45,10 +45,12 @@ if CLIENT then
     local name = net.ReadString()
 
     EPOP:AddMessage({
-      text = name .. " tried to jump twice..",
+      text = LANG.GetParamTranslation("ttt2mg_jump_epop", {nick = name}),
       color = COLOR_ORANGE},
-      "",
-      3
+      nil,
+      5,
+      nil,
+      false
     )
   end)
 end

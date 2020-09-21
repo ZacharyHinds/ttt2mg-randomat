@@ -10,14 +10,14 @@ MINIGAME.conVarData = {
     slider = true,
     min = -100,
     max = 100,
-    desc = "(Def. 100)"
+    desc = "ttt2_minigames_randomhealth_up (Def. 100)"
   },
 
   ttt2_minigames_randomhealth_lw = {
     slider = true,
     min = -100,
     max = 100,
-    desc = "(Def. 0)"
+    desc = "ttt2_minigames_randomhealth_lw (Def. 0)"
   }
 }
 

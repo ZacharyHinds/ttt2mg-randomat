@@ -10,7 +10,7 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 10,
-    desc = "(Def. 1)"
+    desc = "ttt2_minigames_credits_count (Def. 1)"
   }
 }
 
