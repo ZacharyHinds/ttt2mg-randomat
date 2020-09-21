@@ -3,9 +3,16 @@ This is a port of the Randomat/Randomat 2.0 addons for TTT2 using the TTT2 Minig
 
 # Minigames
 
-All the minigames here are based on those from the [Randomat 2.0](https://steamcommunity.com/sharedfiles/filedetails/?id=1406495040). There are some places where I've borrowed code from the original, but by and large I've rebuilt its events using the original as a guideline. Whereever possible, I've tried to incorporate TTT2's improved functions/features.
+All the minigames here are based on those from the [Randomat 2.0](https://steamcommunity.com/sharedfiles/filedetails/?id=1406495040), [Owningle's Extra Randomat Events](https://steamcommunity.com/sharedfiles/filedetails/?id=2214440295), or from other Randomat events I've seen in various let's player's TTT videos (sorry I can't point to specific mods, there are so many Randomats). There are some places where I've borrowed code from the original, but by and large I've rebuilt its events using the original as a guideline. Whereever possible, I've tried to incorporate TTT2's improved functions/features.
 
 ## Completed Minigames
+
+### Accuracy Training
+* Name: sh_accuracy_minigame
+* Description: Deals damage to the shooter when they miss, heals them if they hit.
+* ConVars:
+  * ttt2_minigames_accuracy_dmg - Damage dealt on a miss
+  * ttt2_minigames_accuracy_heal  - Health healed on a hit
 
 ### Infinite Ammo
 * Name: sh_ammo_minigame
@@ -212,6 +219,12 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
 * Name: sh_nofall_minigame
 * Description: Disables fall damage
 
+### Pinball
+* Name: sh_pinball_minigame
+* Description: Players bounce off one another
+* ConVars:
+  * ttt2_minigames_pinball_mult - Velocity multiplier for collisions
+
 ### What did I find in my pocket?
 * Name: sh_pocket_minigame
 * Description: Gives every player a random item from the equipment shop.
@@ -246,6 +259,13 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
   * ttt2_minigames_randomxn_count - Number of additional minigames to activate
 * Known bugs / TODO:
   * Similar issue to Randomness Intesifies
+
+### Recoil
+* Name: sh_recoil_minigame
+* Description: Weapons propel players backwards based on damage
+* ConVars:
+  * ttt2_minigames_recoil_max - Maximum velocity from recoil
+
 
 ### Regeneration
 * Name: sh_regen_minigame
