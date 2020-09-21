@@ -10,14 +10,14 @@ MINIGAME.conVarData = {
     slider = true,
     min = 0,
     max = 60,
-    desc = "(Def. 10)"
+    desc = "ttt2_minigames_regen_delay (Def. 10)"
   },
 
   ttt2_minigames_regen_hp = {
     slider = true,
     min = 1,
     max = 25,
-    desc = "(Def. 1)"
+    desc = "ttt2_minigames_regen_hp (Def. 1)"
   }
 }
 

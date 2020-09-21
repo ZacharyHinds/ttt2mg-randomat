@@ -10,14 +10,14 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 120,
-    desc = "(Def. 60)"
+    desc = "ttt2_minigames_texplode_timer (Def. 60)"
   },
 
   ttt2_minigames_texplode_radius = {
     slider = true,
     min = 1,
     max = 1000,
-    desc = "(Def. 600)"
+    desc = "ttt2_minigames_texplode_radius (Def. 600)"
   }
 }
 

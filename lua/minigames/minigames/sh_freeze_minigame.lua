@@ -10,24 +10,24 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 10,
-    desc = "(Def. 5)"
+    desc = "ttt2_minigames_freeze_duration (Def. 5)"
   },
 
   ttt2_minigames_freeze_timer = {
     slider = true,
     min = 1,
     max = 60,
-    desc = "(Def. 30)"
+    desc = "ttt2_minigames_freeze_timer (Def. 30)"
   },
 
   ttt2_minigames_freeze_quotes = {
     checkbox = true,
-    desc = "(Def. 1)"
+    desc = "ttt2_minigames_freeze_quotes (Def. 1)"
   },
 
   ttt2_minigames_freeze_desc = {
     checkbox = true,
-    desc = "(Def. 0)"
+    desc = "ttt2_minigames_freeze_desc (Def. 0)"
   }
 }
 

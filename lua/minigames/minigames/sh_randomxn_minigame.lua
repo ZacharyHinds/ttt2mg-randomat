@@ -11,7 +11,7 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 20,
-    desc = "(Def. 5)"
+    desc = "ttt2_minigames_randomxn_count (Def. 5)"
   }
 }
 

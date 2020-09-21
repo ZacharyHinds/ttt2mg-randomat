@@ -8,7 +8,7 @@ MINIGAME.contact = "Zzzaaaccc13 on TTT2 Discord"
 MINIGAME.conVarData = {
   ttt2_minigames_cantstop_disable_back = {
     checkbox = true,
-    desc = "(Def. 1)"
+    desc = "ttt2_minigames_cantstop_disable_back (Def. 1)"
   }
 }
 

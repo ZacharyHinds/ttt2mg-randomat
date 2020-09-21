@@ -10,7 +10,7 @@ MINIGAME.conVarData = {
     slider = true,
     min = 0,
     max = 100,
-    desc = "(Def. 50)"
+    desc = "ttt2_minigames_suspicion_jst_chance (Def. 50)"
   }
 }
 

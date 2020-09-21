@@ -10,7 +10,7 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 10,
-    desc = "(Def. 5)"
+    desc = "ttt2_minigames_crabs_count (Def. 5)"
   }
 }
 

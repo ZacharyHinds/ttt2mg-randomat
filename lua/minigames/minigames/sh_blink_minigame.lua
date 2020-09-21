@@ -10,14 +10,14 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 20,
-    desc = "(Def. 12)"
+    desc = "ttt2_minigames_blink_cap (Def. 12)"
   },
   ttt2_minigames_blink_delay = {
     slider = true,
     min = 0,
     max = 3,
     decimal = 1,
-    desc = "(Def. 0.5)"
+    desc = "ttt2_minigames_blink_delay (Def. 0.5)"
   }
 }
 

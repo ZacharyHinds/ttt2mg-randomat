@@ -10,19 +10,19 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 10,
-    desc = "(Def. 0)"
+    desc = "ttt2_minigames_barrels_count (Def. 3)"
   },
   ttt2_minigames_barrels_range = {
     slider = true,
     min = 100,
     max = 1000,
-    desc = "(Def. 100)"
+    desc = "ttt2_minigames_barrels_range (Def. 100)"
   },
   ttt2_minigames_barrels_timer = {
     slider = true,
     min = 1,
     max = 240,
-    desc = "(Def. 60)"
+    desc = "ttt2_minigames_barrels_timer (Def. 60)"
   }
 }
 

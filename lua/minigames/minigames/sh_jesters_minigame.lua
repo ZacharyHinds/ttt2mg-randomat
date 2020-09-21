@@ -8,12 +8,12 @@ MINIGAME.contact = "Zzzaaaccc13 on TTT2 Discord"
 MINIGAME.conVarData = {
   ttt2_minigames_jesters_base_traitor = {
     checkbox = true,
-    desc = "(Def. 1)"
+    desc = "ttt2_minigames_jesters_base_traitor (Def. 1)"
   },
 
   ttt2_minigames_jesters_base_detective = {
     checkbox = true,
-    desc = "(Def. 1)"
+    desc = "ttt2_minigames_jesters_base_detective (Def. 1)"
   }
 }
 

@@ -10,14 +10,14 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 100,
-    desc = "(Def. 25)"
+    desc = "ttt2_minigames_lifesteal_health (Def. 25)"
   },
 
   ttt2_minigames_lifesteal_cap = {
     slider = true,
     min = 0,
     max = 300,
-    desc = "(Def. 0)"
+    desc = "ttt2_minigames_lifesteal_cap (Def. 0)"
   }
 }
 

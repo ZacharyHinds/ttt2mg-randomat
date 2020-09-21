@@ -10,14 +10,14 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 100,
-    desc = "(Def. 30)"
+    desc = "ttt2_minigames_grave_health (Def. 30)"
   },
 
   ttt2_minigames_grave_delay = {
     slider = true,
     min = 0,
     max = 60,
-    desc = "(Def. 3)"
+    desc = "ttt2_minigames_grave_delay (Def. 3)"
   }
 }
 

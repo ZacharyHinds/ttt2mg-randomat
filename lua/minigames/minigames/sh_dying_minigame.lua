@@ -10,24 +10,24 @@ MINIGAME.conVarData = {
     slider = true,
     min = 1,
     max = 60,
-    desc = "(Def. 3)"
+    desc = "ttt2_minigames_dying_timer (Def. 3)"
   },
 
   ttt2_minigames_dying_dmg = {
     slider = true,
     min = 1,
     max = 100,
-    desc = "(Def. 5)"
+    desc = "ttt2_minigames_dying_dmg (Def. 5)"
   },
 
   ttt2_minigames_dying_affectall = {
     checkbox = true,
-    desc = "(Def. 0)"
+    desc = "ttt2_minigames_dying_affectall (Def. 0)"
   },
 
   ttt2_minigames_dying_cankill = {
     checkbox = true,
-    desc = "(Def. 1)"
+    desc = "ttt2_minigames_dying_cankill (Def. 1)"
   }
 }
 
