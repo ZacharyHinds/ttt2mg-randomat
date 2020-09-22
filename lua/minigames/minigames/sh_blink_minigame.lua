@@ -68,7 +68,9 @@ if SERVER then
 
   function MINIGAME:OnDeactivation()
     timer.Remove("AngelMinigame")
+    if #angels <= 0 then return end
     for i = 1, #angels do
+      if not IsValid(angels[i]) then continue end
       angels[i]:Remove()
     end
   end
