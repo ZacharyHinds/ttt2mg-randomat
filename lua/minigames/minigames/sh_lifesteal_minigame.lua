@@ -25,9 +25,11 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "Lifesteal"
+      Русский = "Кража жизни"
     },
     desc = {
       English = "Gain life for killing people... Is it worth it?"
+      Русский = "Получить жизнь за убийство людей... Стоит ли?"
     }
   }
 end

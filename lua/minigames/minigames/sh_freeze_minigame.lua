@@ -36,9 +36,11 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "Freeze!"
+      Русский = "Ни с места!"
     },
     desc = {
       English = "All Innocents will freeze (and become immune) every {time} seconds"
+      Русский = "Все невинные будут заморожены (и приобретут иммунитет) каждые {time} сек."
     }
   }
 else

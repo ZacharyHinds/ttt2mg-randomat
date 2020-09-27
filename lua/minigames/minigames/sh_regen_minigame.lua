@@ -25,9 +25,11 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "Regeneration"
+      Русский = "Регенерация"
     },
     desc = {
       English = "We learned to heal over time, its hard, but definitely possible..."
+      Русский = "Мы научились лечиться с течением времени, это тяжело, но определённо возможно..."
     }
   }
 end

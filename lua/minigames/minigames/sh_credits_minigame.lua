@@ -18,6 +18,7 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "Infinite Credits for Everyone!"
+      Русский = "Бесконечные кредиты для всех!"
     },
     desc = {
       English = ""

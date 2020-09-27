@@ -9,9 +9,11 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "Wallhack!"
+      Русский = "Видение сквозь стены!"
     },
     desc = {
       English = "None can hide from my sight!"
+      Русский = "Никто не сможет спрятаться от меня!"
     }
   }
 end

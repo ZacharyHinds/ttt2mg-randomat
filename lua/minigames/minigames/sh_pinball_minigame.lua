@@ -19,9 +19,11 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "Pinball"
+      Русский = "Пинбол"
     },
     desc = {
       English = "That deaf, dumb, blind kid sure plays a mean pinball"
+      Русский = "Этот глухой, тупой, слепой парень играет в пинбол"
     }
   }
 end

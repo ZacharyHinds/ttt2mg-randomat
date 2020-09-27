@@ -16,6 +16,7 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "Soulmates"
+      Русский = "Родственные души"
     },
     desc = {
       English = ""

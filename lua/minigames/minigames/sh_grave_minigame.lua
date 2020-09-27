@@ -25,9 +25,11 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "RISE FROM YOUR GRAVE!"
+      Русский = "ВОССТАНИЕ ИЗ МОГИЛЫ!"
     },
     desc = {
       English = "The dead will return as Infected!"
+      Русский = "Мёртвые вернутся как заражённые!"
     }
   }
 end

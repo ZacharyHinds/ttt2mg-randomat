@@ -24,9 +24,11 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "Accuracy Training"
+      Русский = "Тренировка точности"
     },
     desc = {
       English = "Missed shots backfire and hits heal"
+      Русский = "Пропущенные выстрелы летят в ответ и при попадании в цель лечат"
     }
   }
 end

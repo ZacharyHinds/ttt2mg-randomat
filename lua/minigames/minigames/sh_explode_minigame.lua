@@ -20,9 +20,11 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "Random Player Explosions!"
+      Русский = "Случайные взрывы игроков!"
     },
     desc = {
       English = "A Random Person Will Explode every {time} seconds!"
+      Русский = "Случайный человек будет взрываться каждые {time} сек.!"
     }
   }
 else

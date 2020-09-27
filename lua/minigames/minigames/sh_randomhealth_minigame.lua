@@ -25,6 +25,7 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "Random Health for everyone!"
+      Русский = "Случайный уровень здоровье для всех!"
     },
     desc = {
       English = ""

@@ -9,6 +9,7 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "We've updated our privacy policy."
+      Русский = "Мы обновили нашу политику конфиденциальности."
     },
     desc = {
       English = ""

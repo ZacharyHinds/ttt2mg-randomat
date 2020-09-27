@@ -18,9 +18,11 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "Switch!"
+      Русский = "Switch!"
     },
     desc = {
       English = "There's this game my fauther taught me years ago, it's called \"Switch\""
+      Русский = "Это игра, которую мой отец научил меня много лет назад, она называется \"Switch\""
     }
   }
 else

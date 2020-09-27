@@ -19,6 +19,7 @@ if CLIENT then
   MINIGAME.lang = {
     name = {
       English = "Randomness Intensifies"
+      Русский = "Случайность усиливается"
     },
     desc = {
       English = ""
