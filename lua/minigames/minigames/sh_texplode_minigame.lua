@@ -25,11 +25,11 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Explosive Traitors"
+      English = "Explosive Traitors",
       Русский = "Взрывоопасные предатели"
     },
     desc = {
-      English = "A traitor will explode in {time} seconds"
+      English = "A traitor will explode in {time} seconds",
       Русский = "Предатель взорвётся через {time} сек.!"
     }
   }

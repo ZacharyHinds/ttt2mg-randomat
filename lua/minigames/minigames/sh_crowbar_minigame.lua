@@ -24,7 +24,7 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "The 'bar has been raised!"
+      English = "The 'bar has been raised!",
       Русский = "Бар был поднят на воздух!"
     },
     desc = {

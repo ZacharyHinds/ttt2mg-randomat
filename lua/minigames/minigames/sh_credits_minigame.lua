@@ -17,7 +17,7 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Infinite Credits for Everyone!"
+      English = "Infinite Credits for Everyone!",
       Русский = "Бесконечные кредиты для всех!"
     },
     desc = {

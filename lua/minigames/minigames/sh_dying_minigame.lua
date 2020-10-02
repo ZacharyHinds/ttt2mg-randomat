@@ -34,11 +34,11 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Death comes..."
+      English = "Death comes...",
       Русский = "Смерть приходит..."
     },
     desc = {
-      English = "Every moment could be your last!"
+      English = "Every moment could be your last!",
       Русский = "Каждый момент может быть твоим последним!"
     }
   }

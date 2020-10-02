@@ -15,11 +15,11 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Can't Stop!"
+      English = "Can't Stop!",
       Русский = "Не могу остановиться!"
     },
     desc = {
-      English = "Won't Stop!"
+      English = "Won't Stop!",
       Русский = "Не остановится!"
     }
   }

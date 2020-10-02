@@ -17,7 +17,7 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Suspicion!"
+      English = "Suspicion!",
       Русский = "Подозрение!"
     },
     desc = {

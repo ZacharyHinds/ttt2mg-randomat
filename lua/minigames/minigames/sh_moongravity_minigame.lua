@@ -18,7 +18,7 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Moon Gravity!"
+      English = "Moon Gravity!",
       Русский = "Лунная гравитация!"
     },
     desc = {

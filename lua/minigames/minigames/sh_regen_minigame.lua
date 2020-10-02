@@ -24,11 +24,11 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Regeneration"
+      English = "Regeneration",
       Русский = "Регенерация"
     },
     desc = {
-      English = "We learned to heal over time, its hard, but definitely possible..."
+      English = "We learned to heal over time, its hard, but definitely possible...",
       Русский = "Мы научились лечиться с течением времени, это тяжело, но определённо возможно..."
     }
   }

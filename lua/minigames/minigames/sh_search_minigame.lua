@@ -8,7 +8,7 @@ MINIGAME.contact = "Zzzaaaccc13 on TTT2 Discord"
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Dead Men Tell No Tales"
+      English = "Dead Men Tell No Tales",
       Русский = "Мертвецы не рассказывают сказки"
     },
     desc = {

@@ -24,12 +24,12 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "RISE FROM YOUR GRAVE!"
-      Русский = "ВОССТАНИЕ ИЗ МОГИЛЫ!"
+      English = "RISE FROM YOUR GRAVE!",
+      Русский = "ВОССТАНЬ ИЗ СВОЕЙ МОГИЛЫ!"
     },
     desc = {
-      English = "The dead will return as Infected!"
-      Русский = "Мёртвые вернутся как заражённые!"
+      English = "The dead will return as Infected!",
+      Русский = "Мёртвые вернутся обратно как заражённые!"
     }
   }
 end
