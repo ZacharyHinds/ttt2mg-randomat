@@ -367,9 +367,7 @@ All the minigames here are based on those from the [Randomat 2.0](https://steamc
 
 # Other features
 
-## Randomat X
-
-Adds a remake of the Randomat, which has the wokring name of "Randomat X". This SWEP appears in the Detective shop and when used it activates a random minigame (any valid TTT2 Minigame, not just the ones included with this collection).
+## Randomat Weapon moved to [TTT-2/ttt2mg-randomat](https://github.com/TTT-2/ttt2mg-randomat)
 
 Known Bugs / TODO:
 * The icon and model require the old randomat to be installed since I haven't made my own.
