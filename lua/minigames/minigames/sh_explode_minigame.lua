@@ -71,7 +71,7 @@ if SERVER then
 end
 
 if CLIENT then
-  function MINIMGAME:ShowActivationEPOP() end
+  function MINIGAME:ShowActivationEPOP() end
   net.Receive("ttt2mg_explode_epop", function()
     local time = net.ReadInt(32)
     local name = net.ReadString()
