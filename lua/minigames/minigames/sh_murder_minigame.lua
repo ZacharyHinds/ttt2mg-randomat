@@ -56,6 +56,9 @@ if SERVER then
     end
   end
 
+  function MINIGAME:IsSelectable()
+    return false
+  end
 
   function MINIGAME:OnActivation()
     plys = {}
@@ -101,7 +104,6 @@ if SERVER then
       elseif ply:GetSubRole() ~= ROLE_INNOCENT then
         ply:SetRole(ROLE_INNOCENT, TEAM_INNOCENT)
         SendFullStateUpdate()
-      else
         -- print("[TTT2][sh_murder_minigame] Did nothing to " .. ply:Nick())
       end
 
