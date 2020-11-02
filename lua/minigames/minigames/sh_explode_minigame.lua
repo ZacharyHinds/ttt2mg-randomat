@@ -19,10 +19,12 @@ local ttt2_minigames_explode_timer = CreateConVar("ttt2_minigames_explode_timer"
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Random Player Explosions!"
+      English = "Random Player Explosions!",
+      Русский = "Случайные взрывы игроков!"
     },
     desc = {
-      English = "A Random Person Will Explode every {time} seconds!"
+      English = "A Random Person Will Explode every {time} seconds!",
+      Русский = "Случайный человек будет взрываться каждые {time} сек.!"
     }
   }
 else

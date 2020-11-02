@@ -18,7 +18,8 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Randomness Intensifies"
+      English = "Randomness Intensifies",
+      Русский = "Случайность усиливается"
     },
     desc = {
       English = ""

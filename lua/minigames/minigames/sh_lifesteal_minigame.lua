@@ -24,10 +24,12 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Lifesteal"
+      English = "Lifesteal",
+      Русский = "Вампиризм"
     },
     desc = {
-      English = "Gain life for killing people... Is it worth it?"
+      English = "Gain life for killing people... Is it worth it?",
+      Русский = "Получите жизнь за убийство людей... Оно того стоит?"
     }
   }
 end

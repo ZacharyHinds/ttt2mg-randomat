@@ -18,7 +18,8 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Pinball"
+      English = "Pinball",
+      Русский = "Пинбол"
     },
     desc = {
       English = "That deaf, dumb, blind kid sure plays a mean pinball"

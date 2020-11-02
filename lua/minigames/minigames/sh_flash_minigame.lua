@@ -18,10 +18,12 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Speeeeeed!"
+      English = "Speeeeeed!",
+      Русский = "Скооооорость!"
     },
     desc = {
-      English = "Everthing is fast as Flash now! ({scale}% faster)"
+      English = "Everything is fast as Flash now! ({scale}% faster)",
+      Русский = "Теперь всё быстро, как флэш! (Быстрее на {scale}%)"
     }
   }
 end

@@ -18,7 +18,8 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Multigame"
+      English = "Multigame",
+      Русский = "Мультиигра"
     }
   }
 end

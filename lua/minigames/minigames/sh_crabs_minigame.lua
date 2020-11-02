@@ -17,10 +17,12 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Crabs are People!"
+      English = "Crabs are People!",
+      Русский = "Крабы - это люди!"
     },
     desc = {
-      English = "Headcrabs will spawn on death."
+      English = "Headcrabs will spawn on death.",
+      Русский = "Хэдкрабы появятся после смерти."
     }
   }
 end

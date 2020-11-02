@@ -20,10 +20,12 @@ MINIGAME.conVarData = {
 if CLIENT then
   MINIGAME.lang = {
     name = {
-      English = "Jesters!"
+      English = "Jesters!",
+      Русский = "Шуты!"
     },
     desc = {
-      English = "One traitor, One Detective. Everyone else is a jester. Detective is stronger."
+      English = "One traitor, One Detective. Everyone else is a jester. Detective is stronger.",
+      Русский = "Один предатель, один детектив. Все остальные - шуты. Детектив сильнее."
     }
   }
 end
