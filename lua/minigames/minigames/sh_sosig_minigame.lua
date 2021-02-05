@@ -31,7 +31,9 @@ if SERVER then
     end
 
     hook.Add("WeaponEquip", "SosigMinigameEquip", function(wep, ply)
+      if GetRoundState() ~= ROUND_ACTIVE then hook.Remove("WeaponEquip", "SosigMinigameEquip") end
       timer.Create("SosigMinigameDelay", 0.1, 1, function()
+        if GetRoundState() ~= ROUND_ACTIVE then timer.Remove("SosigMinigameDelay") end
         net.Start("sosig_trigger")
         net.Send(ply)
         for i = 1, #plys do

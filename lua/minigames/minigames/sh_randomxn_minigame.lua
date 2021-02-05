@@ -24,6 +24,7 @@ if CLIENT then
 end
 
 if SERVER then
+  local active_mgs = {}
   local ttt2_minigames_randomxn_count = CreateConVar("ttt2_minigames_randomxn_count", "5", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Number of games to activate")
   function MINIGAME:ShowActivationEPOP()
     net.Start("ttt2mg_randomxn_epop")
@@ -37,11 +38,16 @@ if SERVER then
       if not minigame then return end
 
       ActivateMinigame(minigame)
+      active_mgs[#active_mgs + 1] = minigame
     end)
   end
 
   function MINIGAME:OnDeactivation()
     timer.Remove("RandomxnMinigame")
+    for i = 1, #active_mgs do
+      DeactivateMinigame(active_mgs[i])
+    end
+    active_mgs = {}
   end
 else
   function MINIGAME:ShowActivationEPOP() end

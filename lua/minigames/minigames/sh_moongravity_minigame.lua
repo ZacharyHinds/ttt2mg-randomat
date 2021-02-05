@@ -37,7 +37,12 @@ if SERVER then
     timer.Create("GravityMinigame", 1, 0, function()
       for i = 1, #plys do
         local ply = plys[i]
-        if ply:Alive() and not ply:IsSpec() then ply:SetGravity(ttt2_minigames_moongravity_gravity:GetFloat()) end
+        if ply:Alive() and not ply:IsSpec() and GetRoundState() == ROUND_ACTIVE then
+          ply:SetGravity(ttt2_minigames_moongravity_gravity:GetFloat())
+        elseif GetRoundState() ~= ROUND_ACTIVE then
+          ply:SetGravity(1)
+          if i == #plys then timer.Remove("GravityMinigame") end
+        end
       end
     end)
   end

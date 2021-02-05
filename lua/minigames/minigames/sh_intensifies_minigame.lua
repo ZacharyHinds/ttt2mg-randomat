@@ -28,6 +28,7 @@ end
 
 if SERVER then
   local ttt2_minigames_intensifies_timer = CreateConVar("ttt2_minigames_intensifies_timer", "20", {FCVAR_ARCHIVE}, "How often should a new game be activated")
+  local active_mgs = {}
 
   function MINIGAME:OnActivation()
     timer.Create("IntensifiesMinigame", ttt2_minigames_intensifies_timer:GetInt(), 0, function()
@@ -35,11 +36,16 @@ if SERVER then
       if not minigame then return end
 
       ActivateMinigame(minigame)
+      active_mgs[#active_mgs + 1] = minigame
     end)
   end
 
   function MINIGAME:OnDeactivation()
     timer.Remove("IntensifiesMinigame")
+    for i = 1, #active_mgs do
+      DeactivateMinigame(active_mgs[i])
+    end
+    active_mgs = {}
   end
 
 end
