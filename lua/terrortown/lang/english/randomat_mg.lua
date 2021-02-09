@@ -1,5 +1,9 @@
 L = LANG.GetLanguageTableReference("english")
 
+--misc
+L["ttt2mg_misc_you"] = "You"
+L["ttt2mg_misc_someone"] = "Someone"
+
 --Communism
 L["ttt2mg_communism_epop"] = "{role} bought everyone {item}"
 
@@ -50,3 +54,9 @@ L["ttt2mg_switch_epop"] = "Go!"
 
 --You can only jump once
 L["ttt2mg_jump_epop"] = "{nick} tried to jump twice..."
+
+--Democracy
+L["ttt2mg_democracy_voted_for"] = "{who} voted for {target}"
+L["ttt2mg_democracy_vote_tie"] = "Vote Failed: Tie"
+L["ttt2mg_democracy_insufficient"] = "Vote Failed: Insufficient Votes"
+L["ttt2mg_democracy_vote_result"] = "Player {nick} has been voted for!"
