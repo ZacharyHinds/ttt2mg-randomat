@@ -165,7 +165,7 @@ if CLIENT then
     local fallback = choices[math.random(#choices)]
     local didVote = false
     local Frame = vgui.Create("DFrame")
-    Frame:SetTitle("Select a Minigame")
+    Frame:SetTitle(LANG.TryTranslation("ttt2mg_choose_frame"))
     Frame:SetPos(5, ScrH() / 3)
     Frame:SetSize(150, 10 + (20 * (#choices + 1)))
     Frame:SetVisible(true)

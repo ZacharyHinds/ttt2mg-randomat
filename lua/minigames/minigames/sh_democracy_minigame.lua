@@ -97,7 +97,7 @@ if SERVER then
       local ply = plys[i]
       local id64 = ply:SteamID64()
       local vote_count = votes[id64]
-      if i <= 1 and vote_count > 0 then
+      if i <= 1 and vote_count and vote_count > 0 then
         winner.ply = ply
         winner.votes = vote_count
       elseif vote_count > winner.votes then
@@ -192,10 +192,13 @@ if CLIENT then
 
   net.Receive("ttt2mg_democracy_start", function()
     if not net.ReadBool() then return end
+    local client = LocalPlayer()
+    if not client:Alive() or client:IsSpec() then return end
+    if client.IsGhost and client:IsGhost() then return end
     local nicks = net.ReadTable()
     local ids = net.ReadTable()
     local Frame = vgui.Create("DFrame")
-    Frame:SetTitle("Democracy Minigame")
+    Frame:SetTitle(LANG.TryTranslation("ttt2mg_democracy_frame"))
     Frame:SetPos(5, ScrH() / 3)
     Frame:SetSize(150,10 + (20 * (#nicks + 1)))
     Frame:SetVisible(true)

@@ -56,7 +56,14 @@ L["ttt2mg_switch_epop"] = "Go!"
 L["ttt2mg_jump_epop"] = "{nick} tried to jump twice..."
 
 --Democracy
+L["ttt2mg_democracy_frame"] = "Vote to Kill"
 L["ttt2mg_democracy_voted_for"] = "{who} voted for {target}"
 L["ttt2mg_democracy_vote_tie"] = "Vote Failed: Tie"
 L["ttt2mg_democracy_insufficient"] = "Vote Failed: Insufficient Votes"
-L["ttt2mg_democracy_vote_result"] = "Player {nick} has been voted for!"
+L["ttt2mg_democracy_vote_result"] = "{nick} has been voted for!"
+
+--Promotion
+L["ttt2mg_promotion_frame"] = "Promotion Choices"
+
+--Pick Your Poison
+L["ttt2mg_choose_frame"] = "Select a Minigame"

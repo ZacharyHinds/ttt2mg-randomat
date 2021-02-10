@@ -82,7 +82,7 @@ if CLIENT then
   net.Receive("ttt2mg_promotion_received", function()
     local choices = net.ReadTable()
     local Frame = vgui.Create("DFrame")
-    Frame:SetTitle("Promotion Choices")
+    Frame:SetTitle(LANG.TryTranslation("ttt2mg_promotion_frame"))
     Frame:SetPos(5, ScrH() / 3)
     Frame:SetSize(150, 10 + (20 * (#choices + 1)))
     Frame:SetVisible(true)
@@ -91,7 +91,8 @@ if CLIENT then
     for i = 1, #choices do
       local choice = choices[i]
       local Button = vgui.Create("DButton", Frame)
-      Button:SetText(choice:gsub("^%l", string.upper))
+      -- Button:SetText(choice:gsub("^%l", string.upper))
+      Button:SetText(LANG.TryTranslation(choice))
       Button:SetPos(0, 10 + (20 * i))
       Button:SetSize(150,20)
       Button.DoClick = function()
