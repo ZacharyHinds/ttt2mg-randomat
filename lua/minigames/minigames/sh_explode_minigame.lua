@@ -35,6 +35,7 @@ if SERVER then
     local effectdata = EffectData()
 
     timer.Create("MinigameExplode", ttt2_minigames_explode_timer:GetInt(), 0, function()
+      if GetRoundState() ~= ROUND_ACTIVE then timer.Remove("MinigameExplode") return end
       local plys = util.GetAlivePlayers()
       local ply = plys[math.random(#plys)]
       local explodetries = 0
