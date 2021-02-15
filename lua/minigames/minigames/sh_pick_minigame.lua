@@ -41,18 +41,17 @@ if SERVER then
   local ttt2_minigames_choose_mode = CreateConVar("ttt2_minigames_choose_mode", "2", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Voting mode")
   local ttt2_minigames_choose_count = CreateConVar("ttt2_minigames_choose_count", "5", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "Number of choices")
   local votes = {}
-  local vote_mode = nil
+  local vote_mode = 2
   local active_mgs = {}
 
   local function ResetVotes()
     votes = {}
-    vote_mode = nil
+    vote_mode = 2
   end
 
   local function DoVoting()
-    if ttt2_minigames_choose_mode:GetInt() ~= 2 then
-      vote_mode = ttt2_minigames_choose_mode:GetInt()
-    elseif not vote_mode then
+    vote_mode = ttt2_minigames_choose_mode:GetInt()
+    if vote_mode == 2 then
       vote_mode = math.random(0,1)
     end
     return vote_mode == 0
@@ -80,7 +79,7 @@ if SERVER then
         winner.name = name
         winner.votes = count
         ties = {}
-      elseif vote_count == winnder.votes then
+      elseif vote_count == winner.votes then
         winner.name = nil
         winner.votes = count
         ties[#ties + 1] = name
@@ -121,7 +120,7 @@ if SERVER then
         local rnd = math.random(#mgs)
         mg = mgs[rnd]
         table.remove(mgs, rnd)
-      until mg:IsSelectable() and GetConVar("ttt2_minigames_" .. mg.name .. "_enabled"):GetBool() and not mg:IsActive()
+      until mg:IsSelectable() and GetConVar("ttt2_minigames_" .. mg.name .. "_enabled"):GetBool() and not mg:IsActive() and mg.name ~= "sh_pick_minigame"
       choices[#choices + 1] = mg.name
     end
     for i = 1, #choices do
@@ -138,9 +137,9 @@ if SERVER then
     net.Start("ttt2mg_choose_start")
     net.WriteTable(choices)
     if ttt2_minigames_choose_mode:GetInt() == 0 then
-      net.Send(ply)
-    else
       net.Send(plys)
+    else
+      net.Send(ply)
     end
   end
 
@@ -185,7 +184,7 @@ if CLIENT then
         didVote = true
       end
     end
-    timer.Simple(30, function()
+    timer.Simple(29.5, function()
       if didVote or not Frame.Close then return end
       Frame:Close()
       net.Start("ttt2mg_choose_start")
