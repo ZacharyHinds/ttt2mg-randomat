@@ -20,7 +20,7 @@ if CLIENT then
       English = "Switch!"
     },
     desc = {
-      English = "There's this game my fauther taught me years ago, it's called \"Switch\""
+      English = "There's this game my father taught me years ago, it's called \"Switch\""
     }
   }
 else
@@ -32,8 +32,8 @@ if SERVER then
   function MINIGAME:OnActivation()
     timer.Create("SwitchMinigameTimer", ttt2_minigames_switch_timer:GetInt(), 0, function()
       local i = 0
-      local ply1 = 0
-      local ply2 = 0
+      local ply1 = nil
+      local ply2 = nil
       for _, ply in RandomPairs(player.GetAll()) do
         if not ply:Alive() or ply:IsSpec() then continue end
 
@@ -46,6 +46,7 @@ if SERVER then
         end
       end
       i = 0
+      if not ply1 or not ply2 then return end
       net.Start("switch_minigame_popup")
       net.Broadcast()
       ply1_pos = ply1:GetPos()
