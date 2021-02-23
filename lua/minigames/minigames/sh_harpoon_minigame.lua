@@ -37,7 +37,7 @@ if SERVER then
   function MINIGAME:OnActivation()
     local harpoon_class = ttt2_minigames_harpoon_weaponid:GetString()
     timer.Create("HarpoonMinigame", ttt2_minigames_harpoon_timer:GetInt(), 0, function ()
-      if GetRoundState() == ROUND_ACTIVE then timer.Remove("HarpoonMinigame") return end
+      if GetRoundState() ~= ROUND_ACTIVE then timer.Remove("HarpoonMinigame") return end
       local plys = player.GetAll()
       for i = 1, #plys do
         local ply = plys[i]
