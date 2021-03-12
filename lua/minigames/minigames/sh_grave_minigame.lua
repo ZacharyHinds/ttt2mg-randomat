@@ -38,6 +38,7 @@ if SERVER then
   function MINIGAME:OnActivation()
     hook.Add("PostPlayerDeath", "GraveMinigame", function(ply)
       if ply.RisenForRound == true then return end
+      if ply:GetSubRole() == ROLE_INFECTED then ply.RisenForRound = true return end
       -- local revivalreason = LANG.TryTranslation("ttt2_minigames_" .. self.name .. "_name")
 
       ply:Revive(
