@@ -172,6 +172,7 @@ if SERVER then
       if GetRoundState() ~= ROUND_ACTIVE then
         timer.Remove("TTT2mgVotingTimer")
         ClearVotes()
+        return
       end
       StartVotingRound()
     end)
