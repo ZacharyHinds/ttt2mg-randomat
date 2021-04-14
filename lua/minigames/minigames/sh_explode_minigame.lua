@@ -27,12 +27,17 @@ if CLIENT then
   }
 else
   util.AddNetworkString("explosion_minigame_exploded")
+  util.AddNetworkString("ttt2mg_explode_epop")
 end
 
 if SERVER then
   function MINIGAME:OnActivation()
 
     local effectdata = EffectData()
+    net.Start("ttt2mg_explode_epop")
+    net.WriteInt(ttt2_minigames_explode_timer:GetInt(), 32)
+    net.WriteString(self.name)
+    net.Broadcast()
 
     timer.Create("MinigameExplode", ttt2_minigames_explode_timer:GetInt(), 0, function()
       if GetRoundState() ~= ROUND_ACTIVE then timer.Remove("MinigameExplode") return end
