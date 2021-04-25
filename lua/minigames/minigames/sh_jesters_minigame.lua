@@ -65,7 +65,7 @@ if SERVER then
     local plys = util.GetAlivePlayers()
     for i = 1, #plys do
       local ply = plys[i]
-      if (ply:HasTeam(TEAM_TRAITOR) and tx == 0) or (ply:GetBaseRole() == ROLE_DETECTIVE and dx == 0) then
+      if (ply:GetTeam() == TEAM_TRAITOR and tx == 0) or (ply:GetBaseRole() == ROLE_DETECTIVE and dx == 0) then
         if ply:GetBaseRole() ~= ROLE_DETECTIVE then
           if ply:GetSubRole() ~= ROLE_TRAITOR and ttt2_minigames_jesters_base_traitor:GetBool() then ply:SetRole(ROLE_TRAITOR) end
           tx = 1

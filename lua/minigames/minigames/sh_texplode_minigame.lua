@@ -53,7 +53,7 @@ local ttt2_minigames_texplode_radius = CreateConVar("ttt2_minigames_texplode_rad
     for _, ply in RandomPairs(player.GetAll()) do
       if not ply:Alive() or ply:IsSpec() then continue end
 
-      if ply:HasTeam(TEAM_TRAITOR) then
+      if ply:GetTeam() == TEAM_TRAITOR then
         if willExplode then
           tgt = ply
           ply:PrintMessage(HUD_PRINTTALK, "You have been chosen to explode. Watch out, and stay close to innocents.")

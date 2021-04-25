@@ -45,7 +45,7 @@ if SERVER then
         for _, pl in ipairs(player.GetAll()) do
           if not pl:Alive() or pl:IsSpec() then continue end
 
-          if pl:HasTeam(pres:GetTeam()) then pl:Kill() end
+          if pl:GetTeam() == pres:GetTeam() then pl:Kill() end
         end
       end
     end)
