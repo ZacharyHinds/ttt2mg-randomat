@@ -68,7 +68,7 @@ if SERVER then
 
       for i = 1, #plys do
         local ply = plys[i]
-        if not ply:Alive() or ply:IsSpec() or not ply:GetTeam() == TEAM_INNOCENT then continue end
+        if not ply:Alive() or ply:IsSpec() or ply:GetTeam() ~= TEAM_INNOCENT then continue end
 
         ply:Freeze(true)
         ply.isFrozen = true
