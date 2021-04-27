@@ -41,7 +41,7 @@ local ttt2_minigames_texplode_timer = CreateConVar("ttt2_minigames_texplode_time
 local ttt2_minigames_texplode_radius = CreateConVar("ttt2_minigames_texplode_radius", "600", {FCVAR_ARCHIVE}, "How many credits should be available at a time?")
   function MINIGAME:ShowActivationEPOP()
     net.Start("ttt2mg_texplode_epop")
-    net.WriteInt(ttt2_minigames_explode_timer:GetInt(), 32)
+    net.WriteInt(ttt2_minigames_texplode_timer:GetInt(), 32)
     net.WriteString(self.name)
     net.Broadcast()
   end
