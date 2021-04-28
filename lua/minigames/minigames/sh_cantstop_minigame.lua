@@ -27,18 +27,28 @@ if SERVER then
   local ttt2_minigames_cantstop_disable_back = CreateConVar("ttt2_minigames_cantstop_disable_back", "1", {FCVAR_ARCHIVE}, "Disable the \"s\" key")
   function MINIGAME:OnActivation()
     hook.Add("Think", "CantStopMinigame", function()
-      local plys = player.GetAll()
-      for i = 1, #plys do
-        local ply = plys[i]
-        if ply:Alive() and not ply:IsSpec() then
-          ply:ConCommand("+forward")
-          if ttt2_minigames_cantstop_disable_back:GetBool() then
-            ply:ConCommand("-back")
+      if GetRoundState() == ROUND_ACTIVE then
+        local plys = player.GetAll()
+        for i = 1, #plys do
+          local ply = plys[i]
+          if ply:Alive() and not ply:IsSpec() then
+            ply:ConCommand("+forward")
+            if ttt2_minigames_cantstop_disable_back:GetBool() then
+              ply:ConCommand("-back")
+            end
+          elseif not ply.MgExcept then
+            ply:ConCommand("-forward")
+            ply.MgExcept = true
           end
-        elseif not ply.MgExcept then
-          ply:ConCommand("-forward")
-          ply.MgExcept = true
         end
+      else
+        local plys = player.GetAll()
+        for i = 1, #plys do
+          local ply = plys[i]
+          ply:ConCommand("-forward")
+          ply.MgExcept = nil
+        end
+        hook.Remove("Think", "CantStopMinigame")
       end
     end)
   end
