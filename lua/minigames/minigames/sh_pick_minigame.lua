@@ -136,7 +136,7 @@ if SERVER then
     local ply = plys[math.random(#plys)]
     net.Start("ttt2mg_choose_start")
     net.WriteTable(choices)
-    if ttt2_minigames_choose_mode:GetInt() == 0 then
+    if DoVoting() then
       net.Send(plys)
     else
       net.Send(ply)
