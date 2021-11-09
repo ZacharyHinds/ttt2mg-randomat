@@ -18,17 +18,14 @@ end
 
 if SERVER then
   function MINIGAME:OnActivation()
-    local plys = player.GetAll()
-    timer.Create("DeafMinigameDelay", 1, 1, function()
-      hook.Add("Think", "DeafMinigameThink", function()
-        for i = 1, #plys do
-          plys[i]:ConCommand("soundfade 100 1")
+    hook.Add("TTT2CanUseVoiceChat", "DeafMinigameAvoidVoice", function(ply, isTeam)
+        if IsValid(ply) then
+            return false
         end
-      end)
     end)
   end
 
   function MINIGAME:OnDeactivation()
-    hook.Remove("Think", "DeafMinigameThink")
+    hook.Remove("TTT2CanUseVoiceChat", "DeafMinigameAvoidVoice")
   end
 end
