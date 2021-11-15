@@ -69,7 +69,7 @@ end
 
 
 function IsEvil(ply)
-  if not ply:HasTeam(TEAM_INNOCENT) then
+  if not ply:GetTeam() == TEAM_INNOCENT then
     return true
   else
     return false
