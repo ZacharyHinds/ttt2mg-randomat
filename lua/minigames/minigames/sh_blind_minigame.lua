@@ -74,7 +74,7 @@ if CLIENT then
     if not blind_active then return end
     local client = LocalPlayer()
 
-    if client:HasTeam(TEAM_TRAITOR) then
+    if client:GetTeam() == TEAM_TRAITOR then
       surface.SetDrawColor(0, 0, 0, 255)
       surface.DrawRect(0, 0, ScrW(), ScrH())
     end
