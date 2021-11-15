@@ -36,7 +36,7 @@ else
 end
 
 function IsEvil(ply)
-  if not ply:HasTeam(TEAM_INNOCENT) then
+  if ply:GetTeam() ~= TEAM_INNOCENT then
     return true
   else
     return false
@@ -107,7 +107,7 @@ if SERVER then
         -- print("[TTT2][sh_murder_minigame] Did nothing to " .. ply:Nick())
       end
 
-      -- if ply:HasTeam(TEAM_TRAITOR) then ply:Give("weapon_ttt_minigame_murknife") end
+      -- if ply:GetTeam() == TEAM_TRAITOR then ply:Give("weapon_ttt_minigame_murknife") end
       -- if ply:GetBaseRole() == ROLE_DETECTIVE then ply:Give("weapon_ttt_minigames_murrevolver") end
 
       if ply:GetBaseRole() == ROLE_INNOCENT then
