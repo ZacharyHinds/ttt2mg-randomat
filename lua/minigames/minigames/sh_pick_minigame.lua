@@ -105,8 +105,10 @@ if SERVER then
     local mg = minigames.Get(mgname)
     if not DoVoting() then
       ActivateMinigame(mg)
-    else
+    elseif votes[mgname] then
       votes[mgname] = votes[mgname] + 1
+    else
+      votes[mgname] = 1
     end
   end)
 
