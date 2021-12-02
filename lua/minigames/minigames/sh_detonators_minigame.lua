@@ -46,14 +46,15 @@ if SERVER then
 
       plylist[k]["ply"]:PrintMessage(HUD_PRINTTALK, "You have a detonator for " .. plylist[k]["tgt"]:Nick())
 
-      for i, wep in ipairs(plylist[k]["ply"]:GetWeapons()) do
-        if wep.Kind == WEAPON_EQUIP2 then
-          plylist[k]["ply"]:StripWeapon(wep:GetClass())
-        end
-      end
+      -- for i, wep in ipairs(plylist[k]["ply"]:GetWeapons()) do
+      --   if wep.Kind == WEAPON_EQUIP2 then
+      --     plylist[k]["ply"]:StripWeapon(wep:GetClass())
+      --   end
+      -- end
 
       plylist[k]["ply"]:Give("weapon_ttt_minigames_detonator")
-      plylist[k]["ply"]:GetWeapon("weapon_ttt_minigames_detonator").Target = plylist[k]["tgt"]
+      plylist[k]["ply"]:GetWeapon("weapon_ttt_minigames_detonator").Target = (plylist[k]["tgt"])
+      plylist[k]["ply"]:GetWeapon("weapon_ttt_minigames_detonator"):SetDetTarget(plylist[k]["tgt"])
 
     end
   end

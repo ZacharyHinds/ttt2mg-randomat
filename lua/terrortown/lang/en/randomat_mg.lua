@@ -62,6 +62,12 @@ L["ttt2mg_democracy_vote_tie"] = "Vote Failed: Tie"
 L["ttt2mg_democracy_insufficient"] = "Vote Failed: Insufficient Votes"
 L["ttt2mg_democracy_vote_result"] = "{nick} has been voted for!"
 
+--Detonators
+L["ttt2mg_randomat_detonator"] = "{nick}'s Detonator"
+L["title_ttt2mg_detonator"] = "A player was detonated."
+L["desc_ttt2mg_detonator"] = "{victim} ({vrole} / {vteam}) was detonated by {attacker} ({arole} / {ateam})" 
+L["desc_ttt2mg_detonator_corpse"] = "{victim}'s ({vrole} / {vteam}) corpse was detonated by {attacker} ({arole} / {ateam})"
+
 --Promotion
 L["ttt2mg_promotion_frame"] = "Promotion Choices"
 
