@@ -44,12 +44,7 @@ if SERVER then
   local function BetterWeaponStrip(ply, exclude_class)
     if not ply or not IsValid(ply) or not ply:IsPlayer() then return end
     if not ttt2_minigames_harpoon_strip_avoid:GetBool() then ply:StripWeapons() return end
-    local dbg = table.GetKeys(exclude_class)
-    -- for i = 1, #dbg do
-    --   if exclude_class[dbg[i]] then
-    --     print("[TTT2MG Harpoon] Excluding class: " .. dbg[i] .. "| true")
-    --   end
-    -- end
+
     local weps = ply:GetWeapons()
     for i = 1, #weps do
       local wep = weps[i]

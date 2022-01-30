@@ -105,8 +105,10 @@ if SERVER then
     local mg = minigames.Get(mgname)
     if not DoVoting() then
       ActivateMinigame(mg)
-    else
+    elseif votes[mgname] then
       votes[mgname] = votes[mgname] + 1
+    else
+      votes[mgname] = 1
     end
   end)
 
@@ -136,7 +138,7 @@ if SERVER then
     local ply = plys[math.random(#plys)]
     net.Start("ttt2mg_choose_start")
     net.WriteTable(choices)
-    if ttt2_minigames_choose_mode:GetInt() == 0 then
+    if DoVoting() then
       net.Send(plys)
     else
       net.Send(ply)

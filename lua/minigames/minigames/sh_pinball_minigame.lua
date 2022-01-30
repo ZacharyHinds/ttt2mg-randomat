@@ -33,8 +33,10 @@ if SERVER then
       if not (ply1 and ply2) or not (ply1:IsPlayer() and ply2:IsPlayer()) then return end
       if ply1:GetPos():DistToSqr(ply2:GetPos()) > 1300 then return end
 
-      local velocity = Vector(ply1:GetPos().x - ply2:GetPos().x, ply1:GetPos().y - ply2:GetPos().y, ply1:GetPos().z - ply2:GetPos().z)
-      ply1:SetVelocity(velocity * ttt2_minigames_pinball_mult:GetInt())
+      timer.Simple(0.1, function()        
+        local velocity = Vector(ply1:GetPos().x - ply2:GetPos().x, ply1:GetPos().y - ply2:GetPos().y, ply1:GetPos().z - ply2:GetPos().z)
+        ply1:SetVelocity(velocity * ttt2_minigames_pinball_mult:GetInt())
+      end)
     end)
   end
 
