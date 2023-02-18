@@ -115,6 +115,16 @@ function SWEP:DetonateTarget()
 		util.Effect("Explosion", effect, true, true)
 		util.Effect("HelicopterMegaBomb", effect, true, true)
 		sound.Play("ambient/explosions/explode_4.wav", pos, 95, 100, 1)
+
+		-- local announce_mode = GetConVar("ttt2_minigames_detonators_announce"):GetInt()
+		-- print("TT2 Minigame Detonator Announce Mode:", announce_mode)
+
+		net.Start("det_announce_epop")
+		net.WriteString(self:GetOwner():Nick())
+		net.WriteString(target:Nick())
+		net.WriteInt(GetConVar("ttt2_minigames_detonators_announce"):GetInt(), 3)
+		net.Broadcast()
+
 	else
 		local pos = self:GetDetTarget():GetPos()
 		local trace = util.TraceLine({
