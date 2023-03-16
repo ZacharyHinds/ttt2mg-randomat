@@ -37,6 +37,7 @@ if SERVER then
   local ttt2_minigames_grave_delay = CreateConVar("ttt2_minigames_grave_delay", "3", {FCVAR_ARCHIVE}, "Respawn delay for minigame")
   function MINIGAME:OnActivation()
     hook.Add("PostPlayerDeath", "GraveMinigame", function(ply)
+      if SpecDM and (ply.IsGhost and ply:IsGhost()) then return end
       if ply.RisenForRound == true then return end
       if ply:GetSubRole() == ROLE_INFECTED then ply.RisenForRound = true return end
       -- local revivalreason = LANG.TryTranslation("ttt2_minigames_" .. self.name .. "_name")

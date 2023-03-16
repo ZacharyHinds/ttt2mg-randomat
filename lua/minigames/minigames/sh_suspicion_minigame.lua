@@ -75,7 +75,7 @@ if CLIENT then
     local jes_str = LANG.GetParamTranslation("ttt2mg_suspicion_epop_jes", {nick = plynick})
     local tra_str = LANG.GetParamTranslation("ttt2mg_suspicion_epop_tra", {nick = plynick})
 
-    if client:HasTeam(TEAM_TRAITOR) then
+    if client:GetTeam() == TEAM_TRAITOR then
       if ply:GetSubRole() == ROLE_TRAITOR then
         EPOP:AddMessage({
           text = tra_str,
