@@ -64,6 +64,8 @@ L["ttt2mg_democracy_vote_result"] = "{nick} has been voted for!"
 
 --Detonators
 L["ttt2mg_randomat_detonator"] = "{nick}'s Detonator"
+L["ttt2mg_randomat_detonator_announce_1"] = "Someone detonated {victim}!"
+L["ttt2mg_randomat_detonator_announce_2"] = "{attacker} detonated {victim}!"
 L["title_ttt2mg_detonator"] = "A player was detonated."
 L["desc_ttt2mg_detonator"] = "{victim} ({vrole} / {vteam}) was detonated by {attacker} ({arole} / {ateam})" 
 L["desc_ttt2mg_detonator_corpse"] = "{victim}'s ({vrole} / {vteam}) corpse was detonated by {attacker} ({arole} / {ateam})"

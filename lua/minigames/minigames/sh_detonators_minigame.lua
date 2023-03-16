@@ -5,6 +5,18 @@ end
 MINIGAME.author = "Wasted"
 MINIGAME.contact = "Zzzaaaccc13 on TTT2 Discord"
 
+MINIGAME.conVarData = {
+  ttt2_minigames_detonators_announce = {
+    combobox = true,
+    choices = {
+      "0 - No Announcement",
+      "1 - Announce when someone is detonated",
+      "2 - Announce who detonated who"
+    },
+    desc = "ttt2_minigames_detonators_announce (Def. 1)"
+  }
+}
+
 if CLIENT then
   MINIGAME.lang = {
     name = {
@@ -17,6 +29,8 @@ if CLIENT then
 end
 
 if SERVER then
+  util.AddNetworkString("det_announce_epop")
+  CreateConVar("ttt2_minigames_detonators_announce", "1", {FCVAR_ARCHIVE, FCVAR_REPLICATED}, "0: Don't Announce; 1: Announce someone detonated; 2: Announce who detonated who")
   function MINIGAME:OnActivation()
     local plysize = 0
 
@@ -62,4 +76,33 @@ if SERVER then
   function MINIGAME:OnDeactivation()
     timer.Remove("DetMinigameTimer")
   end
+end
+
+if CLIENT then
+  net.Receive("det_announce_epop", function()
+    owner_nick = net.ReadString()
+    victim_nick = net.ReadString()
+    announce_mode = net.ReadInt(3)
+    if announce_mode == 0 then
+      return 
+    elseif announce_mode == 1 then
+      EPOP:AddMessage({
+        text = LANG.GetParamTranslation("ttt2mg_randomat_detonator_announce_1", {victim = victim_nick}),
+        color = COLOR_ORANGE,
+        nil,
+        4,
+        nil,
+        true
+      })
+    else
+      EPOP:AddMessage({
+        text = LANG.GetParamTranslation("ttt2mg_randomat_detonator_announce_2", {attacker = owner_nick, victim = victim_nick}),
+        color = COLOR_ORANGE,
+        nil,
+        4,
+        nil,
+        true
+      })
+    end
+  end)
 end
